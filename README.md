@@ -1,34 +1,24 @@
 📝 English Writing Coach
 
-AI-Powered Web Platform for Writing Improvement
+AI-Powered Writing Improvement Platform
 
 Graduation Project – Data Science & Artificial Intelligence (DSAI)
 Zewail City University of Science and Technology
 
+Supervisor: Dr. Mohamed Sami
+
 📌 Project Overview
 
-English Writing Coach is an AI-powered web platform designed to help users improve their English writing skills through automatic proficiency assessment, personalized feedback, and progress tracking.
-
-The system classifies user-written text into CEFR levels (A1–C2) and provides intelligent feedback and learning recommendations using state-of-the-art NLP models.
-
-🎯 Objectives
-
-Automatically classify English writing proficiency (A1–C2)
-
-Provide meaningful AI-generated feedback beyond grammar correction
-
-Track user progress visually over time
-
-Build a scalable, real-world AI-powered web application
+English Writing Coach is an AI-powered web platform designed to help users improve their English writing skills through automatic CEFR level classification (A1–C2), AI-based feedback, and progress tracking.
 
 🚀 Current Progress (Phase 1)
 ✅ Completed Work
 
-Dataset merging and preprocessing using UniversalCEFR
+Merged and preprocessed the UniversalCEFR dataset
 
-Feature engineering and readability analysis using TextStat
+Applied TextStat for readability and linguistic feature extraction
 
-Initial experimentation with nature-inspired optimization techniques:
+Experimented with nature-inspired optimization techniques:
 
 Ant Colony Optimization (feature extraction)
 
@@ -40,122 +30,60 @@ Tabu Search
 
 Particle Swarm Optimization (PSO)
 
-Fine-tuning and evaluation of BERT and DistilBERT
+Fine-tuned BERT and DistilBERT models
 
-Achieved ~59% accuracy on merged dataset
+Achieved ~59% accuracy with improved generalization and no overfitting
 
-Improved generalization without overfitting
+Visualized training and validation performance using interactive graphs
 
-Training & validation performance visualized using:
-
-Accuracy/Loss curves
-
-Interactive visualizations
+Developed an initial frontend prototype using React
 
 🧠 Models Used
 
-BERT – CEFR text classification
+BERT
 
-DistilBERT – Lightweight and faster alternative
+DistilBERT
 
-TextStat – Readability and linguistic feature extraction
+TextStat (feature extraction)
 
 📊 Results Summary
-Model	Dataset	Accuracy	Overfitting
-BERT	Merged CEFR	~59%	❌ No
-DistilBERT	Merged CEFR	~59%	❌ No
-
-✔ Stable validation curves
-✔ Improved generalization
-✔ No significant overfitting observed
-
-🗂 Dataset
-
-UniversalCEFR Dataset
-Annotated English texts labeled with CEFR levels (A1–C2)
-
-Preprocessing Steps
-
-Text cleaning & normalization
-
-Class balancing
-
-Train / validation / test split
-
-Dataset merging for robustness
-
-🧱 System Architecture (Planned)
+Model	Accuracy	Overfitting
+BERT	~59%	No
+DistilBERT	~59%	No
+🧱 Planned System Stack
 
 Frontend: React
 
-Backend: Node.js (Authentication & Logic)
+Backend: Node.js
 
 AI Backend: Django + Python
 
 Database: MongoDB
 
-Models: BERT / DistilBERT / GPT-based feedback
-
 Deployment: Docker & Kubernetes
 
 👥 Team Members
-Name	Role
-Fares Wael Atef	Data Scientist & Frontend Developer
-Ahmed Abdelsamad	AI Backend Developer
-Abdelrhman Hisham	Frontend Developer
-Ahmed Sameh	Backend & DevOps Engineer
 
-Supervisors
+Fares Wael Atef
 
-Dr. Mohamed samy
+Ahmed Abdelsamad
 
-Eng. Rana Abdelfattah
+Abdelrhman Hisham
 
-📈 Future Work
+Ahmed Sameh
 
-Improve classification accuracy (target ≥ 90%)
+📈 Next Steps
 
-Integrate GPT-based personalized feedback
+Improve classification accuracy
 
-Full-stack system integration
+Integrate GPT-based feedback generation
 
-User dashboard and progress analytics
+Complete backend and frontend integration
 
-Deployment and performance optimization
+Deploy the full system
 
-🛠 How to Run (Phase 1 – Models)
-# Clone repository
-git clone https://github.com/AhmedADesoky/Grad_Project.git
-cd Grad_Project
+📚 Dataset & References
 
-# Install requirements
-pip install -r requirements.txt
+UniversalCEFR Dataset (Hugging Face)
 
-# Run notebooks / scripts
-jupyter notebook
-
-📎 Repository Structure (Example)
-├── data/
-│   ├── raw/
-│   ├── processed/
-├── notebooks/
-│   ├── EDA.ipynb
-│   ├── BERT_training.ipynb
-├── models/
-├── visualizations/
-├── backend/
-├── frontend/
-├── README.md
-
-📚 References
-
-UniversalCEFR Dataset – Hugging Face
-
-Devlin et al., BERT: Pre-training of Deep Bidirectional Transformers, 2019
-
-Sanh et al., DistilBERT, 2019
-
-📌 License
-
-This project is developed as part of a Graduation Project at
-Zewail City University of Science and Technology.
+BERT & DistilBERT research papers

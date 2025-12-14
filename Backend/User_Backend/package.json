@@ -1,0 +1,35 @@
+{
+  "name": "user_backend",
+  "version": "1.0.0",
+  "description": "English Writing Coach - AI-Powered Backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "english",
+    "cefr",
+    "ai",
+    "graphql",
+    "zewail"
+  ],
+  "author": "Fares Wael Atef, Ahmed Abdelsamad, Abdelrhman Hisham, Ahmed Sameh",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

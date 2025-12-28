@@ -24,7 +24,7 @@ export function Sidebar() {
   ];
 
   return (
-    <div className="fixed left-0 top-0 h-screen w-64 bg-white dark:glass-effect-dark border-r border-border/50 overflow-y-auto">
+    <div className="fixed left-0 top-0 h-screen w-64 bg-transparent dark:glass-effect-dark border-r border-border/50 overflow-y-auto">
       {/* Header */}
       <div className="p-6 border-b border-border/50">
         <Link to="/main" className="flex items-center gap-3 group">

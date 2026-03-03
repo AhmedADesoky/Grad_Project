@@ -1,5 +1,4 @@
 import User from '../../models/User.js';
-import bcrypt from 'bcryptjs';
 import { signUp, logIn } from '../../services/userService.js'; 
 
 export default {
@@ -17,16 +16,12 @@ export default {
       };
     },
     login: async (_, { Email, Password }) => {
-      const user = await logIn(Email, Password);
-      return {
-        ...user,
-        Created_At: (await User.findById(user.id)).createdAt.toISOString(),
-      };
+      return await logIn(Email, Password);
     },
   },
   User: {
-    id: (user) => user._id.toString(),
-    Created_At: (user) => user.createdAt ? user.createdAt.toISOString() : null,
+    id: (user) => user._id ? user._id.toString() : user.id,
+    Created_At: (user) => user.createdAt ? user.createdAt.toISOString() : user.Created_At,
     token: (user) => user.token || null,
   },
 };

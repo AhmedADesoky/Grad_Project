@@ -1,10 +1,28 @@
-import gql from "graphql-tag";
-import { resolvers } from "./resolvers.js";
+import { gql } from 'graphql-tag';
+import userSchema from './schemas/user.js';
+import userResolvers from './resolvers/user.js';
 
-export const typeDefs = gql`
+const rootSchema = gql`
   type Query {
-    hello: String
+    _empty: String
+  }
+  type Mutation {
+    _emptyMutation: String
   }
 `;
 
-export { resolvers };
+const typeDefs = [rootSchema, userSchema];
+const resolvers = {
+  Query: {
+    ...userResolvers.Query,
+    _empty: () => "This is a placeholder",
+  },
+  Mutation: {
+    ...userResolvers.Mutation,
+    _emptyMutation: () => "This is a placeholder",
+  },
+
+  User: userResolvers.User,
+};
+
+export { typeDefs, resolvers };

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Sidebar } from './Sidebar';
 import { useAuth } from '../contexts/AuthContext';
+import { useSidebar } from '../contexts/SidebarContext';
 import { FileText, Clock, Award, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const examQuestions = [
@@ -29,6 +30,7 @@ const examQuestions = [
 
 export function ExamPage() {
   const { user, updateProfile } = useAuth();
+  const { isCollapsed } = useSidebar();
   const [examStarted, setExamStarted] = useState(false);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -79,11 +81,11 @@ export function ExamPage() {
       <div className="min-h-screen bg-background transition-colors">
         <Sidebar />
        
-        <div className="ml-64">
+        <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
             <div className="ios-card p-8 animate-fade-in">
             <div className="flex items-center gap-4 mb-8">
-              <div className="gradient-primary p-5 rounded-3xl shadow-xl shadow-primary/30">
+              <div className="gradient-primary p-5 rounded-xl shadow-xl shadow-primary/20">
                 <FileText className="w-12 h-12 text-white" />
               </div>
               <div>
@@ -93,7 +95,7 @@ export function ExamPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-              <div className="flex items-center gap-4 p-6 bg-info/5 border border-info/20 rounded-2xl">
+              <div className="flex items-center gap-4 p-6 bg-info/5 border border-info/20 rounded-xl">
                 <div className="p-3 bg-info/10 rounded-xl">
                   <Clock className="w-6 h-6 text-info" />
                 </div>
@@ -103,7 +105,7 @@ export function ExamPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-6 bg-success/5 border border-success/20 rounded-2xl">
+              <div className="flex items-center gap-4 p-6 bg-success/5 border border-success/20 rounded-xl">
                 <div className="p-3 bg-success/10 rounded-xl">
                   <Award className="w-6 h-6 text-success" />
                 </div>
@@ -113,7 +115,7 @@ export function ExamPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
+              <div className="flex items-center gap-4 p-6 bg-primary/5 border border-primary/20 rounded-xl">
                 <div className="p-3 bg-primary/10 rounded-xl">
                   <FileText className="w-6 h-6 text-primary" />
                 </div>
@@ -124,7 +126,7 @@ export function ExamPage() {
               </div>
             </div>
 
-            <div className="bg-warning/5 border-l-4 border-warning p-6 rounded-2xl mb-8">
+            <div className="bg-warning/5 border-l-4 border-warning p-6 rounded-xl mb-8">
               <div className="flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-warning mt-0.5 flex-shrink-0" />
                 <div>
@@ -138,7 +140,7 @@ export function ExamPage() {
 
             <button
               onClick={handleStartExam}
-              className="w-full gradient-primary text-white py-5 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 group font-semibold text-lg"
+              className="w-full gradient-primary text-white py-5 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group font-semibold text-lg"
             >
               Start Exam
               <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -157,7 +159,7 @@ export function ExamPage() {
       <div className="min-h-screen bg-background transition-colors">
         <Sidebar />
        
-        <div className="ml-64">
+        <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
             <div className="ios-card p-10 text-center animate-fade-in">
             <div className={`${passed ? 'bg-success/20' : 'bg-warning/20'} w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl`}>
@@ -170,7 +172,7 @@ export function ExamPage() {
            
             <h1 className="text-foreground mb-6">Exam Completed!</h1>
            
-            <div className="gradient-primary rounded-3xl p-10 mb-8 shadow-2xl shadow-primary/30 relative overflow-hidden">
+            <div className="gradient-primary rounded-xl p-10 mb-8 shadow-2xl shadow-primary/20 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
               <div className="relative">
                 <p className="text-white/90 mb-2 font-medium">Your Score</p>
@@ -190,13 +192,13 @@ export function ExamPage() {
                   setExamStarted(false);
                   setSubmitted(false);
                 }}
-                className="bg-card border-2 border-border text-foreground px-8 py-4 rounded-2xl hover:bg-muted transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                className="bg-card border-2 border-border text-foreground px-8 py-4 rounded-xl hover:bg-muted transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
               >
                 Back to Exam Info
               </button>
               <a
                 href="/dashboard"
-                className="gradient-primary text-white px-8 py-4 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 shadow-lg font-semibold"
+                className="gradient-primary text-white px-8 py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 shadow-lg font-semibold"
               >
                 View Dashboard
               </a>
@@ -212,7 +214,7 @@ export function ExamPage() {
     <div className="min-h-screen bg-background transition-colors">
       <Sidebar />
      
-      <div className="ml-64">
+      <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
           <div className="ios-card p-8 animate-fade-in">
           <div className="mb-8">
@@ -230,7 +232,7 @@ export function ExamPage() {
                     </div>
                     <h3 className="text-foreground">Question {question.id}</h3>
                   </div>
-                  <span className="bg-accent/10 text-accent px-5 py-2 rounded-2xl text-sm font-semibold">
+                  <span className="bg-accent/10 text-accent px-5 py-2 rounded-xl text-sm font-semibold">
                     {question.points} points
                   </span>
                 </div>
@@ -240,7 +242,7 @@ export function ExamPage() {
                 <textarea
                   value={answers[question.id] || ''}
                   onChange={(e) => handleAnswerChange(question.id, e.target.value)}
-                  className="w-full h-40 p-5 bg-input-background border border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none transition-all text-foreground placeholder:text-muted-foreground"
+                  className="w-full h-40 p-5 bg-input-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none transition-all text-foreground placeholder:text-muted-foreground"
                   placeholder="Type your answer here..."
                 />
                
@@ -254,7 +256,7 @@ export function ExamPage() {
           <div className="mt-8 flex justify-end">
             <button
               onClick={handleSubmit}
-              className="flex items-center gap-2 gradient-primary text-white px-10 py-4 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 group font-semibold text-lg"
+              className="flex items-center gap-2 gradient-primary text-white px-10 py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group font-semibold text-lg"
             >
               <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               Submit Exam

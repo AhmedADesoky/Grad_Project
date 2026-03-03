@@ -30,7 +30,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/main" className="flex items-center gap-3 group">
-            <div className="gradient-primary p-2.5 rounded-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-105">
+            <div className="gradient-primary p-3 rounded-2xl shadow-lg group-hover:shadow-primary/30 transition-all duration-300 group-hover:scale-105">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
             <span className="text-foreground font-semibold text-lg hidden sm:block">English Coach</span>
@@ -45,7 +45,7 @@ export function Navbar() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 ${
                     isActive
                       ? 'gradient-primary text-white shadow-lg shadow-primary/30'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -60,7 +60,7 @@ export function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-2xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
               title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             >
@@ -70,7 +70,7 @@ export function Navbar() {
             {/* Logout Button */}
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-destructive hover:bg-destructive/10 transition-all duration-300"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-destructive hover:bg-destructive/10 transition-all duration-300"
             >
               <LogOut className="w-5 h-5" />
               <span className="hidden md:inline font-medium">Logout</span>

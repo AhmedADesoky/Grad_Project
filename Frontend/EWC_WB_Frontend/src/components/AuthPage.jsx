@@ -49,18 +49,18 @@ export function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen gradient-mesh flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-md relative z-10 animate-fade-in">
         {/* Logo and Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center gradient-primary p-5 rounded-3xl mb-6 shadow-2xl shadow-primary/50">
+          <div className="inline-flex items-center justify-center gradient-primary p-5 rounded-2xl mb-6 shadow-xl shadow-primary/30">
             <BookOpen className="w-14 h-14 text-white" />
           </div>
           <h1 className="text-foreground mb-3 text-3xl">English Writing Coach</h1>
@@ -69,8 +69,8 @@ export function AuthPage() {
           </p>
         </div>
 
-        {/* Auth Form Card - iOS Style */}
-        <div className="glass-effect dark:glass-effect-dark rounded-3xl shadow-2xl p-8 border backdrop-blur-xl">
+        {/* Auth Form Card - Clean Style */}
+        <div className="bg-card dark:bg-card rounded-2xl shadow-xl p-8 border border-border">
           <form onSubmit={handleSubmit} className="space-y-5">
             {!isLogin && (
               <div className="space-y-2">
@@ -81,7 +81,7 @@ export function AuthPage() {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 bg-input-background border border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground placeholder:text-muted-foreground"
+                    className="w-full pl-12 pr-4 py-4 bg-input-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground placeholder:text-muted-foreground"
                     placeholder="Enter your username"
                     required={!isLogin}
                   />
@@ -97,7 +97,7 @@ export function AuthPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-input-background border border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground placeholder:text-muted-foreground"
+                  className="w-full pl-12 pr-4 py-4 bg-input-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground placeholder:text-muted-foreground"
                   placeholder="Enter your email"
                   required
                 />
@@ -112,7 +112,7 @@ export function AuthPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-input-background border border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground placeholder:text-muted-foreground"
+                  className="w-full pl-12 pr-4 py-4 bg-input-background border border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground placeholder:text-muted-foreground"
                   placeholder="Enter your password"
                   required
                 />
@@ -120,14 +120,14 @@ export function AuthPage() {
             </div>
 
             {error && (
-              <div className="bg-destructive/10 border border-destructive/30 text-destructive px-5 py-4 rounded-2xl text-sm">
+              <div className="bg-destructive/10 border border-destructive/30 text-destructive px-5 py-4 rounded-xl text-sm">
                 {error}
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full gradient-primary text-white py-4 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 group font-medium"
+              className="w-full gradient-primary text-white py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group font-medium"
             >
               {isLogin ? 'Sign In' : 'Create Account'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -149,7 +149,7 @@ export function AuthPage() {
             <button
               onClick={() => handleSocialLogin('google')}
               type="button"
-              className="flex items-center justify-center gap-3 px-4 py-3 bg-white dark:bg-card border-2 border-border rounded-2xl hover:border-primary hover:shadow-lg transition-all duration-300 group"
+              className="flex items-center justify-center gap-3 px-4 py-3 bg-white dark:bg-card border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all duration-300 group"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
@@ -175,7 +175,7 @@ export function AuthPage() {
             <button
               onClick={() => handleSocialLogin('facebook')}
               type="button"
-              className="flex items-center justify-center gap-3 px-4 py-3 bg-[#1877F2] border-2 border-[#1877F2] rounded-2xl hover:bg-[#1665D8] hover:shadow-lg transition-all duration-300 group"
+              className="flex items-center justify-center gap-3 px-4 py-3 bg-[#1877F2] border-2 border-[#1877F2] rounded-xl hover:bg-[#1665D8] hover:shadow-lg transition-all duration-300 group"
             >
               <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />

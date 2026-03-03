@@ -15,8 +15,7 @@ export const signUp = async ( User_Name, Email, Password ) => {
         throw new Error('Username already taken. Please choose a different username.');
     }
 
-    const Hashed_Password = await bcrypt.hash(Password , 10);
-    const New_User = new User({ User_Name, Email, Password: Hashed_Password });
+    const New_User = new User({ User_Name, Email, Password });
 
     return await New_User.save();
 };
@@ -37,5 +36,11 @@ export const logIn = async (Email , Password) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    return { id : user._id.toString() , User_Name: user.User_Name, Email: user.Email, token };
+    return { 
+        id: user._id.toString(), 
+        User_Name: user.User_Name, 
+        Email: user.Email, 
+        Created_At: user.createdAt.toISOString(),
+        token 
+    };
 }

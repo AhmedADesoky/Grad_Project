@@ -2,6 +2,7 @@
 import React from 'react';
 import { Sidebar } from './Sidebar';
 import { useAuth } from '../contexts/AuthContext';
+import { useSidebar } from '../contexts/SidebarContext';
 import { Calendar, CheckCircle, Clock, BookOpen, Target, Flame, Lightbulb } from 'lucide-react';
 
 const weeklyPlan = [
@@ -64,12 +65,14 @@ const goals = [
 
 export function PersonalizedPlan() {
   const { user } = useAuth();
+  const { isCollapsed } = useSidebar();
+  const userLevel = user?.level || 'A1';
 
   return (
     <div className="min-h-screen bg-background transition-colors">
       <Sidebar />
      
-      <div className="ml-64">
+      <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {/* Header */}
         <div className="mb-8 animate-fade-in">
@@ -79,7 +82,7 @@ export function PersonalizedPlan() {
             </div>
             <h1 className="text-foreground">Your Personalized Learning Plan</h1>
           </div>
-          <p className="text-muted-foreground text-lg">Customized for {user?.level} level - Stay on track with your daily goals</p>
+          <p className="text-muted-foreground text-lg">Customized for {userLevel} level - Stay on track with your daily goals</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -104,7 +107,7 @@ export function PersonalizedPlan() {
                   return (
                     <div
                       key={dayPlan.day}
-                      className={`border-2 rounded-2xl p-6 transition-all hover:shadow-lg ${
+                      className={`border-2 rounded-xl p-6 transition-all hover:shadow-lg ${
                         allCompleted
                           ? 'border-success/30 bg-success/5'
                           : 'border-border bg-card/50'
@@ -181,8 +184,8 @@ export function PersonalizedPlan() {
               </div>
              
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-2xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                  <div className="gradient-primary p-3 rounded-xl group-hover:shadow-primary/50 transition-all flex-shrink-0">
+                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+                  <div className="gradient-primary p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -191,8 +194,8 @@ export function PersonalizedPlan() {
                   </div>
                 </div>
                
-                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-2xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                  <div className="bg-gradient-to-br from-accent to-primary p-3 rounded-xl group-hover:shadow-primary/50 transition-all flex-shrink-0">
+                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+                  <div className="bg-gradient-to-br from-accent to-primary p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -201,8 +204,8 @@ export function PersonalizedPlan() {
                   </div>
                 </div>
                
-                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-2xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                  <div className="bg-gradient-to-br from-secondary to-accent p-3 rounded-xl group-hover:shadow-primary/50 transition-all flex-shrink-0">
+                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+                  <div className="bg-gradient-to-br from-secondary to-accent p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -211,8 +214,8 @@ export function PersonalizedPlan() {
                   </div>
                 </div>
                
-                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-2xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                  <div className="bg-gradient-to-br from-info to-primary p-3 rounded-xl group-hover:shadow-primary/50 transition-all flex-shrink-0">
+                <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+                  <div className="bg-gradient-to-br from-info to-primary p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -262,7 +265,7 @@ export function PersonalizedPlan() {
             </div>
 
             {/* Study Streak */}
-            <div className="gradient-primary rounded-3xl p-6 text-white shadow-2xl shadow-primary/30 relative overflow-hidden">
+            <div className="gradient-primary rounded-xl p-6 text-white shadow-xl shadow-primary/20 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
               <div className="relative">
                 <div className="flex items-center gap-3 mb-4">

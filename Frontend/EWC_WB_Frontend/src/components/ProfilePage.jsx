@@ -2,10 +2,18 @@
 import React, { useState, useRef } from 'react';
 import { Sidebar } from './Sidebar';
 import { useAuth } from '../contexts/AuthContext';
+import { useSidebar } from '../contexts/SidebarContext';
 import { User, Mail, Camera, Trash2, Save, Edit2, Award, BookOpen, TrendingUp, Target } from 'lucide-react';
 
 export function ProfilePage() {
   const { user, updateProfile } = useAuth();
+  const { isCollapsed } = useSidebar();
+  
+  // Safe defaults for user data
+  const progress = user?.progress || { completed: 0, total: 10 };
+  const examScores = user?.examScores || [];
+  const userLevel = user?.level || 'A1';
+  
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     username: user?.username || '',
@@ -45,7 +53,7 @@ export function ProfilePage() {
     <div className="min-h-screen bg-background transition-colors">
       <Sidebar />
      
-      <div className="ml-64">
+      <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
         <div className="ios-card overflow-hidden animate-fade-in">
           {/* Header Gradient */}
@@ -60,7 +68,7 @@ export function ProfilePage() {
             {/* Profile Image Section */}
             <div className="relative -mt-24 mb-8">
               <div className="relative inline-block">
-                <div className="w-48 h-48 rounded-3xl border-4 border-card bg-muted flex items-center justify-center overflow-hidden shadow-2xl">
+                <div className="w-48 h-48 rounded-2xl border-4 border-card bg-muted flex items-center justify-center overflow-hidden shadow-2xl">
                   {user?.profileImage ? (
                     <img
                       src={user.profileImage}
@@ -75,7 +83,7 @@ export function ProfilePage() {
                 <div className="absolute bottom-2 right-2 flex gap-2">
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="gradient-primary text-white p-3 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300"
+                    className="gradient-primary text-white p-3 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
                     title="Upload image"
                   >
                     <Camera className="w-5 h-5" />
@@ -84,7 +92,7 @@ export function ProfilePage() {
                   {user?.profileImage && (
                     <button
                       onClick={handleDeleteImage}
-                      className="bg-destructive text-white p-3 rounded-2xl hover:shadow-xl transition-all duration-300"
+                      className="bg-destructive text-white p-3 rounded-xl hover:shadow-xl transition-all duration-300"
                       title="Delete image"
                     >
                       <Trash2 className="w-5 h-5" />
@@ -112,7 +120,7 @@ export function ProfilePage() {
                 {!isEditing && (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="flex items-center gap-2 gradient-primary text-white px-6 py-3 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 font-semibold"
+                    className="flex items-center gap-2 gradient-primary text-white px-6 py-3 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 font-semibold"
                   >
                     <Edit2 className="w-4 h-4" />
                     Edit Profile
@@ -136,10 +144,10 @@ export function ProfilePage() {
                       type="text"
                       value={formData.username}
                       onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                      className="w-full px-5 py-4 bg-input-background border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground font-medium"
+                      className="w-full px-5 py-4 bg-input-background border-2 border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground font-medium"
                     />
                   ) : (
-                    <div className="px-5 py-4 bg-muted/50 rounded-2xl text-foreground font-medium border-2 border-transparent">
+                    <div className="px-5 py-4 bg-muted/50 rounded-xl text-foreground font-medium border-2 border-transparent">
                       {user?.username}
                     </div>
                   )}
@@ -160,10 +168,10 @@ export function ProfilePage() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-5 py-4 bg-input-background border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground font-medium"
+                      className="w-full px-5 py-4 bg-input-background border-2 border-border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-foreground font-medium"
                     />
                   ) : (
-                    <div className="px-5 py-4 bg-muted/50 rounded-2xl text-foreground font-medium border-2 border-transparent">
+                    <div className="px-5 py-4 bg-muted/50 rounded-xl text-foreground font-medium border-2 border-transparent">
                       {user?.email}
                     </div>
                   )}
@@ -174,14 +182,14 @@ export function ProfilePage() {
                   <div className="flex gap-4">
                     <button
                       onClick={handleSave}
-                      className="flex items-center gap-2 gradient-primary text-white px-8 py-4 rounded-2xl hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 font-semibold"
+                      className="flex items-center gap-2 gradient-primary text-white px-8 py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 font-semibold"
                     >
                       <Save className="w-5 h-5" />
                       Save Changes
                     </button>
                     <button
                       onClick={handleCancel}
-                      className="px-8 py-4 border-2 border-border rounded-2xl text-foreground hover:bg-muted transition-all duration-300 font-semibold"
+                      className="px-8 py-4 border-2 border-border rounded-xl text-foreground hover:bg-muted transition-all duration-300 font-semibold"
                     >
                       Cancel
                     </button>
@@ -195,7 +203,7 @@ export function ProfilePage() {
               <h2 className="text-foreground mb-6">Account Statistics</h2>
              
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="ios-card-hover p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/20 relative overflow-hidden group">
+                <div className="ios-card-hover p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/20 rounded-xl relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-3">
@@ -204,50 +212,50 @@ export function ProfilePage() {
                       </div>
                       <p className="text-muted-foreground text-sm font-medium">Current Level</p>
                     </div>
-                    <p className="text-foreground text-3xl font-bold">{user?.level}</p>
+                    <p className="text-foreground text-3xl font-bold">{userLevel}</p>
                   </div>
                 </div>
                
-                <div className="ios-card-hover p-6 bg-gradient-to-br from-success/5 to-emerald-500/5 border-2 border-success/20 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-success/10 rounded-full blur-2xl"></div>
+                <div className="ios-card-hover p-6 bg-gradient-to-br from-gray-400/5 to-gray-500/5 border-2 border-gray-300/20 dark:border-gray-600/40 rounded-xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gray-400/10 rounded-full blur-2xl"></div>
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 bg-success/10 rounded-xl">
-                        <BookOpen className="w-6 h-6 text-success" />
+                      <div className="p-2 bg-gray-400/10 rounded-xl">
+                        <BookOpen className="w-6 h-6 text-gray-700 dark:text-gray-400" />
                       </div>
                       <p className="text-muted-foreground text-sm font-medium">Total Exams</p>
                     </div>
-                    <p className="text-foreground text-3xl font-bold">{user?.examScores.length || 0}</p>
+                    <p className="text-foreground text-3xl font-bold">{examScores.length}</p>
                   </div>
                 </div>
                
-                <div className="ios-card-hover p-6 bg-gradient-to-br from-info/5 to-blue-500/5 border-2 border-info/20 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-info/10 rounded-full blur-2xl"></div>
+                <div className="ios-card-hover p-6 bg-gradient-to-br from-gray-500/5 to-gray-600/5 border-2 border-gray-400/20 dark:border-gray-600/40 rounded-xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gray-500/10 rounded-full blur-2xl"></div>
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 bg-info/10 rounded-xl">
-                        <Target className="w-6 h-6 text-info" />
+                      <div className="p-2 bg-gray-500/10 rounded-xl">
+                        <Target className="w-6 h-6 text-gray-700 dark:text-gray-400" />
                       </div>
                       <p className="text-muted-foreground text-sm font-medium">Lessons Completed</p>
                     </div>
-                    <p className="text-foreground text-3xl font-bold">{user?.progress.completed}/{user?.progress.total}</p>
+                    <p className="text-foreground text-3xl font-bold">{progress.completed}/{progress.total}</p>
                   </div>
                 </div>
                
-                <div className="ios-card-hover p-6 bg-gradient-to-br from-warning/5 to-orange-500/5 border-2 border-warning/20 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-warning/10 rounded-full blur-2xl"></div>
+                <div className="ios-card-hover p-6 bg-gradient-to-br from-gray-400/5 to-gray-500/5 border-2 border-gray-300/20 dark:border-gray-600/40 rounded-xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gray-400/10 rounded-full blur-2xl"></div>
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 bg-warning/10 rounded-xl">
-                        <TrendingUp className="w-6 h-6 text-warning" />
+                      <div className="p-2 bg-gray-400/10 rounded-xl">
+                        <TrendingUp className="w-6 h-6 text-gray-700 dark:text-gray-400" />
                       </div>
                       <p className="text-muted-foreground text-sm font-medium">Average Score</p>
                     </div>
                     <p className="text-foreground text-3xl font-bold">
-                      {user?.examScores.length
+                      {examScores.length
                         ? Math.round(
-                            user.examScores.reduce((acc, curr) => acc + curr.score, 0) /
-                              user.examScores.length
+                            examScores.reduce((acc, curr) => acc + curr.score, 0) /
+                              examScores.length
                           )
                         : 0}%
                     </p>

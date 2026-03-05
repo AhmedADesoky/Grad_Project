@@ -59,7 +59,7 @@ export function Sidebar() {
                   to={item.path}
                   title={isCollapsed ? item.label : undefined}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${isActive
-                    ? 'bg-muted/70 text-foreground'
+                    ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                     } ${isCollapsed ? 'justify-center' : ''}`}
                 >

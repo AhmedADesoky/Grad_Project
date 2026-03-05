@@ -70,7 +70,7 @@ export function ProfilePage() {
               {/* Profile Image Section */}
               <div className="relative -mt-24 mb-8">
                 <div className="relative inline-block">
-                  <div className="w-48 h-48 rounded-2xl border-4 border-card bg-muted flex items-center justify-center overflow-hidden shadow-2xl">
+                  <div className="w-48 h-48 rounded-2xl border-4 border-card bg-muted flex items-center justify-center overflow-hidden">
                     {user?.profileImage ? (
                       <img
                         src={user.profileImage}
@@ -85,7 +85,7 @@ export function ProfilePage() {
                   <div className="absolute bottom-2 right-2 flex gap-2">
                     <button
                       onClick={() => fileInputRef.current?.click()}
-                      className="gradient-primary text-white p-3 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                      className="gradient-primary text-white p-3 rounded-xl transition-all duration-300"
                       title="Upload image"
                     >
                       <Camera className="w-5 h-5" />
@@ -94,7 +94,7 @@ export function ProfilePage() {
                     {user?.profileImage && (
                       <button
                         onClick={handleDeleteImage}
-                        className="bg-destructive text-white p-3 rounded-xl hover:shadow-xl transition-all duration-300"
+                        className="bg-destructive text-white p-3 rounded-xl transition-all duration-300"
                         title="Delete image"
                       >
                         <Trash2 className="w-5 h-5" />
@@ -122,7 +122,7 @@ export function ProfilePage() {
                   {!isEditing && (
                     <button
                       onClick={() => setIsEditing(true)}
-                      className="flex items-center gap-2 gradient-primary text-white px-6 py-3 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 font-semibold"
+                      className="flex items-center gap-2 gradient-primary text-white px-6 py-3 rounded-xl transition-all duration-300 font-semibold"
                     >
                       <Edit2 className="w-4 h-4" />
                       Edit Profile
@@ -184,7 +184,7 @@ export function ProfilePage() {
                     <div className="flex gap-4">
                       <button
                         onClick={handleSave}
-                        className="flex items-center gap-2 gradient-primary text-white px-8 py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 font-semibold"
+                        className="flex items-center gap-2 gradient-primary text-white px-8 py-4 rounded-xl transition-all duration-300 font-semibold"
                       >
                         <Save className="w-5 h-5" />
                         Save Changes

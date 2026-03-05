@@ -152,7 +152,7 @@ export function ChatScreen() {
     };
 
     return (
-        <div className="h-screen bg-[#fafafa] flex overflow-hidden">
+        <div className="h-screen bg-background flex overflow-hidden">
             <Sidebar />
             <Navbar />
 
@@ -160,7 +160,7 @@ export function ChatScreen() {
             <div className={`flex-1 flex transition-all duration-300 pt-16 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
 
                 {/* Chat History Sidebar */}
-                <div className="w-80 bg-white border-r border-border/50 flex flex-col h-full hidden md:flex">
+                <div className="w-80 bg-card border-r border-border/50 flex flex-col h-full hidden md:flex">
                     {/* Header */}
                     <div className="p-4 border-b border-border/50">
                         <button
@@ -220,7 +220,7 @@ export function ChatScreen() {
 
                                 {/* Dropdown Menu */}
                                 {activeMenuId === chat.id && (
-                                    <div className="absolute right-2 top-10 w-36 bg-white rounded-xl shadow-xl border border-border/50 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-100">
+                                    <div className="absolute right-2 top-10 w-36 bg-card rounded-xl border border-border/50 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-100">
                                         <button
                                             onClick={(e) => startEditing(chat, e)}
                                             className="w-full flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-muted text-left"
@@ -243,13 +243,13 @@ export function ChatScreen() {
                 </div>
 
                 {/* Main Chat Area */}
-                <div className="flex-1 flex flex-col h-full bg-[#fafafa]">
+                <div className="flex-1 flex flex-col h-full bg-muted/30">
 
                     {/* Messages */}
                     <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
                         {!activeChat ? (
                             <div className="h-full flex flex-col items-center justify-center text-muted-foreground space-y-4">
-                                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center">
+                                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
                                     <Bot className="w-8 h-8 text-[#3b82f6]" />
                                 </div>
                                 <p>Start a new conversation to begin practicing!</p>
@@ -261,16 +261,16 @@ export function ChatScreen() {
                                     className={`flex gap-4 max-w-3xl animate-fade-in ${message.sender === 'user' ? 'ml-auto flex-row-reverse' : ''}`}
                                 >
                                     {/* Avatar */}
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${message.sender === 'user' ? 'bg-[#3b82f6] text-white' : 'bg-white border border-border shadow-sm'
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${message.sender === 'user' ? 'bg-[#3b82f6] text-white' : 'bg-card border border-border'
                                         }`}>
                                         {message.sender === 'user' ? <User className="w-5 h-5" /> : <Bot className="w-6 h-6 text-[#3b82f6]" />}
                                     </div>
 
                                     {/* Message Bubble */}
                                     <div className={`flex flex-col gap-1 ${message.sender === 'user' ? 'items-end' : 'items-start'}`}>
-                                        <div className={`px-5 py-3.5 rounded-2xl shadow-sm text-[15px] leading-relaxed ${message.sender === 'user'
+                                        <div className={`px-5 py-3.5 rounded-2xl text-[15px] leading-relaxed ${message.sender === 'user'
                                             ? 'bg-[#3b82f6] text-white rounded-tr-sm'
-                                            : 'bg-white border border-border/50 text-foreground rounded-tl-sm'
+                                            : 'bg-card border border-border/50 text-foreground rounded-tl-sm'
                                             }`}>
                                             {message.text}
                                         </div>
@@ -284,10 +284,10 @@ export function ChatScreen() {
 
                         {isTyping && (
                             <div className="flex gap-4 max-w-3xl animate-fade-in">
-                                <div className="w-10 h-10 rounded-full bg-white border border-border shadow-sm flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center flex-shrink-0">
                                     <Bot className="w-6 h-6 text-[#3b82f6]" />
                                 </div>
-                                <div className="bg-white border border-border/50 px-5 py-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5">
+                                <div className="bg-card border border-border/50 px-5 py-4 rounded-2xl rounded-tl-sm flex items-center gap-1.5">
                                     <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                                     <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                                     <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
@@ -298,7 +298,7 @@ export function ChatScreen() {
                     </div>
 
                     {/* Input Area */}
-                    <div className="p-4 md:p-6 bg-white/50 backdrop-blur-md border-t border-border/50">
+                    <div className="p-4 md:p-6 bg-card/80 backdrop-blur-md border-t border-border/50">
                         <form
                             onSubmit={handleSendMessage}
                             className="max-w-4xl mx-auto relative flex items-center"
@@ -316,7 +316,7 @@ export function ChatScreen() {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Type your message to practice English..."
-                                className="w-full bg-white border border-border shadow-sm rounded-full py-4 pl-14 pr-16 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6]/50 transition-all"
+                                className="w-full bg-card border border-border rounded-full py-4 pl-14 pr-16 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6]/50 transition-all"
                                 disabled={!activeChatId}
                             />
 

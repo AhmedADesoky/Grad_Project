@@ -5,6 +5,7 @@ import { Navbar } from './Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { useSidebar } from '../contexts/SidebarContext';
 import { BookOpen, Award, TrendingUp, Sparkles, BarChart3, ArrowRight, CheckCircle, Clock, Target, Calendar, ChevronLeft, ChevronRight, Heart, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const recommendedCourses = [
 	{
@@ -29,7 +30,64 @@ const recommendedCourses = [
 		image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
 	}
 ];
-import { Link } from 'react-router-dom';
+
+const weeklyPlan = [
+	{
+		day: 'Monday',
+		tasks: [
+			{ title: 'Grammar Practice: Present Perfect', duration: '30 min', completed: true },
+			{ title: 'Vocabulary Building: Business English', duration: '20 min', completed: true }
+		]
+	},
+	{
+		day: 'Tuesday',
+		tasks: [
+			{ title: 'Writing Exercise: Descriptive Essay', duration: '45 min', completed: true },
+			{ title: 'Reading Comprehension', duration: '25 min', completed: false }
+		]
+	},
+	{
+		day: 'Wednesday',
+		tasks: [
+			{ title: 'Grammar Practice: Conditional Sentences', duration: '30 min', completed: false },
+			{ title: 'Writing Practice: Email Writing', duration: '35 min', completed: false }
+		]
+	},
+	{
+		day: 'Thursday',
+		tasks: [
+			{ title: 'Vocabulary Quiz', duration: '20 min', completed: false },
+			{ title: 'Creative Writing Exercise', duration: '40 min', completed: false }
+		]
+	},
+	{
+		day: 'Friday',
+		tasks: [
+			{ title: 'Essay Writing: Argumentative', duration: '60 min', completed: false },
+			{ title: 'Grammar Review', duration: '20 min', completed: false }
+		]
+	},
+	{
+		day: 'Saturday',
+		tasks: [
+			{ title: 'Reading Practice: News Articles', duration: '30 min', completed: false },
+			{ title: 'Vocabulary Expansion', duration: '25 min', completed: false }
+		]
+	},
+	{
+		day: 'Sunday',
+		tasks: [
+			{ title: 'Weekly Review and Practice Test', duration: '90 min', completed: false }
+		]
+	}
+];
+
+const goals = [
+	{ id: 1, title: 'Complete 10 writing exercises', progress: 6, total: 10 },
+	{ id: 2, title: 'Master advanced grammar topics', progress: 3, total: 5 },
+	{ id: 3, title: 'Expand vocabulary by 100 words', progress: 67, total: 100 },
+	{ id: 4, title: 'Write 5 essays', progress: 2, total: 5 }
+];
 
 
 export function MainPage() {
@@ -88,9 +146,9 @@ export function MainPage() {
 
 					{/* Stats Cards - iOS Style */}
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-slide-up">
-					<div className="ios-card p-5 flex items-center gap-4 rounded-3xl group relative overflow-hidden">
-						<div className="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full">
-							<Award className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+					<div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+						<div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+							<Award className="w-6 h-6 text-primary" />
 							</div>
 							<div className="flex flex-col">
 								<p className="text-muted-foreground text-sm font-medium mb-0.5">
@@ -102,9 +160,9 @@ export function MainPage() {
 							</div>
 						</div>
 
-					<div className="ios-card p-5 flex items-center gap-4 rounded-3xl group relative overflow-hidden">
-						<div className="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full">
-							<TrendingUp className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+					<div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+						<div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+							<TrendingUp className="w-6 h-6 text-primary" />
 							</div>
 							<div className="flex flex-col">
 								<p className="text-muted-foreground text-sm font-medium mb-0.5">
@@ -116,9 +174,9 @@ export function MainPage() {
 							</div>
 						</div>
 
-					<div className="ios-card p-5 flex items-center gap-4 rounded-3xl group relative overflow-hidden">
-						<div className="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full">
-							<BookOpen className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+					<div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+						<div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+							<BookOpen className="w-6 h-6 text-primary" />
 							</div>
 							<div className="flex flex-col">
 								<p className="text-muted-foreground text-sm font-medium mb-0.5">
@@ -155,7 +213,7 @@ export function MainPage() {
 									</div>
 
 									<div className="flex flex-col flex-grow text-left">
-										<span className="inline-flex font-bold items-center px-3 py-1 rounded-full bg-blue-100/80 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-[10px] tracking-wider text-center w-fit mb-3">
+										<span className="inline-flex font-bold items-center px-3 py-1 rounded-full text-primary text-[10px] tracking-wider text-center w-fit mb-3" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)' }}>
 											{course.badge}
 										</span>
 										<h3 className="font-semibold text-lg text-foreground mb-4 leading-snug line-clamp-2">
@@ -177,6 +235,145 @@ export function MainPage() {
 									</div>
 								</div>
 							))}
+						</div>
+					</div>
+
+				{/* Personalized Learning Plan Section */}
+				<div className="mb-12">
+					<div className="flex items-center gap-3 mb-6">
+						<div className="p-2 bg-primary/10 rounded-xl">
+							<Target className="w-7 h-7 text-primary" />
+						</div>
+						<div>
+							<h2 className="text-2xl font-bold text-foreground">Your Personalized Learning Plan</h2>
+							<p className="text-muted-foreground text-sm">Customized for {user?.level || 'A1'} level - Stay on track with your daily goals</p>
+						</div>
+					</div>
+
+					<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+						{/* Main Content - Weekly Schedule */}
+						<div className="lg:col-span-2 space-y-6">
+							<div className="ios-card p-8">
+								<div className="flex items-center gap-3 mb-6">
+									<div className="p-2 bg-primary/10 rounded-xl">
+										<Calendar className="w-6 h-6 text-primary" />
+									</div>
+									<div>
+										<h2 className="text-foreground">Weekly Schedule</h2>
+										<p className="text-muted-foreground text-sm">Your personalized learning roadmap</p>
+									</div>
+								</div>
+
+								<div className="space-y-4">
+									{weeklyPlan.map((dayPlan, dayIndex) => {
+										const allCompleted = dayPlan.tasks.every(t => t.completed);
+										const someCompleted = dayPlan.tasks.some(t => t.completed);
+
+										return (
+											<div
+												key={dayPlan.day}
+												className={`border-2 rounded-xl p-6 transition-all ${allCompleted
+													? 'border-success/30 bg-success/5'
+													: 'border-border bg-card/50'
+													}`}
+												style={{ animationDelay: `${dayIndex * 50}ms` }}
+											>
+												<div className="flex items-center justify-between mb-5">
+													<div className="flex items-center gap-3">
+														<div className={`w-12 h-12 rounded-xl flex items-center justify-center font-semibold ${allCompleted
+															? 'gradient-primary text-white'
+															: someCompleted
+																? 'bg-primary/20 text-primary'
+																: 'bg-muted text-muted-foreground'
+															}`}>
+															{dayPlan.day.substring(0, 3)}
+														</div>
+														<div>
+															<h3 className="text-foreground font-semibold">{dayPlan.day}</h3>
+															<p className="text-muted-foreground text-sm">{dayPlan.tasks.length} tasks</p>
+														</div>
+													</div>
+													{allCompleted && (
+														<span className="text-success text-sm font-semibold bg-success/10 px-4 py-2 rounded-full flex items-center gap-2">
+															<CheckCircle className="w-4 h-4" />
+															Completed
+														</span>
+													)}
+												</div>
+
+												<div className="space-y-3">
+													{dayPlan.tasks.map((task, idx) => (
+														<div
+															key={idx}
+															className="flex items-center justify-between p-4 bg-input-background rounded-xl hover:bg-muted/50 transition-all cursor-pointer group"
+														>
+															<div className="flex items-center gap-3">
+																<div className={`w-6 h-6 rounded-lg flex items-center justify-center transition-all ${task.completed
+																	? 'bg-success text-white'
+																	: 'border-2 border-muted-foreground group-hover:border-primary'
+																	}`}>
+																	{task.completed && <CheckCircle className="w-4 h-4" />}
+																</div>
+																<div>
+																	<p className={`text-foreground font-medium ${task.completed ? 'line-through opacity-60' : ''}`}>
+																		{task.title}
+																	</p>
+																	<div className="flex items-center gap-2 text-muted-foreground text-sm mt-1">
+																		<Clock className="w-3.5 h-3.5" />
+																		<span>{task.duration}</span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													))}
+												</div>
+											</div>
+										);
+									})}
+								</div>
+							</div>
+
+
+						</div>
+
+						{/* Sidebar */}
+						<div className="space-y-6">
+							{/* Monthly Goals */}
+							<div className="ios-card p-6">
+								<div className="flex items-center gap-3 mb-6">
+									<div className="p-2 bg-primary/10 rounded-xl">
+										<Target className="w-5 h-5 text-primary" />
+									</div>
+									<div>
+										<h3 className="text-foreground font-semibold">Monthly Goals</h3>
+										<p className="text-muted-foreground text-xs">Track your progress</p>
+									</div>
+								</div>
+
+								<div className="space-y-5">
+									{goals.map((goal) => {
+										const percentage = Math.round((goal.progress / goal.total) * 100);
+										return (
+											<div key={goal.id}>
+												<div className="flex justify-between mb-2">
+													<p className="text-card-foreground text-sm font-medium">{goal.title}</p>
+													<span className="text-muted-foreground text-sm font-bold">
+														{goal.progress}/{goal.total}
+													</span>
+												</div>
+												<div className="w-full bg-muted rounded-full h-3 overflow-hidden">
+													<div
+														className="gradient-primary h-3 rounded-full transition-all duration-500"
+														style={{ width: `${percentage}%` }}
+													/>
+												</div>
+											</div>
+										);
+									})}
+								</div>
+							</div>
+
+
 						</div>
 					</div>
 				</div>

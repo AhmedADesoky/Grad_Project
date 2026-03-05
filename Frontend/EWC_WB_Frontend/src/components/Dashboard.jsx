@@ -24,7 +24,7 @@ export function Dashboard() {
       time: '08:00 am',
       title: 'Homeroom & Announcement',
       grade: 'All Grade',
-      color: 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700'
+      color: 'bg-primary/10 border-primary/30'
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ export function Dashboard() {
       time: '10:00 am',
       title: 'Math Review & Practice',
       grade: 'Grade 1-5',
-      color: 'bg-blue-100 dark:bg-blue-800/30 border-blue-300 dark:border-blue-600'
+      color: 'bg-primary/10 border-primary/30'
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ export function Dashboard() {
       time: '10:30 am',
       title: 'Science Experiment & Discussion',
       grade: 'Grade 6-8',
-      color: 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700'
+      color: 'bg-primary/10 border-primary/30'
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ export function Dashboard() {
       time: '09:00 am',
       title: 'Grammar Workshop',
       grade: 'Grade 3-6',
-      color: 'bg-white dark:bg-blue-950/30 border-blue-100 dark:border-blue-800'
+      color: 'bg-primary/10 border-primary/30'
     },
     {
       id: 5,
@@ -56,7 +56,7 @@ export function Dashboard() {
       time: '02:00 pm',
       title: 'Writing Practice',
       grade: 'Grade 7-9',
-      color: 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700'
+      color: 'bg-primary/10 border-primary/30'
     },
     {
       id: 6,
@@ -64,7 +64,7 @@ export function Dashboard() {
       time: '11:00 am',
       title: 'Vocabulary Building',
       grade: 'All Grade',
-      color: 'bg-blue-100 dark:bg-blue-800/30 border-blue-300 dark:border-blue-600'
+      color: 'bg-primary/10 border-primary/30'
     }
   ];
 
@@ -111,108 +111,66 @@ export function Dashboard() {
 
       <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 pt-24">
-          {/* Header */}
-          <div className="mb-8 animate-fade-in">
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div>
-                <h1 className="text-foreground mb-2">Dashboard</h1>
-                <p className="text-muted-foreground">Welcome back, {user?.username || 'Student'}! Track your progress and stay on schedule.</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="text-right">
-                  <p className="text-sm font-semibold text-foreground">February 2026</p>
-                  <p className="text-xs text-muted-foreground">Current Semester</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* Stats Overview Cards - Professional Glassy Style */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 animate-slide-up">
             {/* Completion Rate - Light Blue */}
-            <div className="ios-card ios-card-hover p-6 relative overflow-hidden group bg-gradient-to-br from-white to-blue-50 dark:from-blue-950/30 dark:to-blue-900/20 border border-blue-100 dark:border-blue-800/50">
-              <div className="relative">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-blue-400 to-blue-600 dark:from-blue-500 dark:to-blue-700 p-3 rounded-xl shadow-lg group-hover:shadow-blue-500/50 dark:group-hover:shadow-blue-600/50 transition-all duration-300">
-                    <Target className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-blue-700 dark:text-blue-400 text-xs font-bold bg-blue-100/50 dark:bg-blue-900/50 px-3 py-1.5 rounded-full">+12%</span>
-                </div>
-                <p className="text-blue-600 dark:text-blue-400 text-sm mb-1 font-semibold">Completion Rate</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-blue-900 dark:text-blue-100 text-4xl font-bold">{completionPercentage}</p>
-                  <span className="text-blue-600 dark:text-blue-400 text-lg">%</span>
-                </div>
-                <div className="mt-3 w-full bg-blue-100/50 dark:bg-blue-900/30 rounded-full h-1.5">
-                  <div
-                    className="bg-gradient-to-r from-blue-400 to-blue-600 dark:from-blue-500 dark:to-blue-700 h-1.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-500/50 dark:shadow-blue-600/50"
-                    style={{ width: `${completionPercentage}%` }}
-                  ></div>
-                </div>
+            <div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+              <div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+                <Target className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-muted-foreground text-sm font-medium mb-0.5">
+                  Completion Rate
+                </p>
+                <p className="text-foreground text-xl font-bold">
+                  {completionPercentage}%
+                </p>
               </div>
             </div>
 
             {/* Exams Completed - Medium Blue */}
-            <div className="ios-card ios-card-hover p-6 relative overflow-hidden group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 border border-blue-200 dark:border-blue-700/50">
-              <div className="relative">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 p-3 rounded-xl shadow-lg group-hover:shadow-blue-600/50 dark:group-hover:shadow-blue-700/50 transition-all duration-300">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-blue-700 dark:text-blue-400 text-xs font-bold bg-blue-200/50 dark:bg-blue-900/50 px-3 py-1.5 rounded-full">+{examScores.length}</span>
-                </div>
-                <p className="text-blue-600 dark:text-blue-400 text-sm mb-1 font-semibold">Exams Completed</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-blue-900 dark:text-blue-100 text-4xl font-bold">{examScores.length}</p>
-                </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-blue-700 dark:text-blue-400 font-semibold">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>Great progress!</span>
-                </div>
+            <div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+              <div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+                <Award className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-muted-foreground text-sm font-medium mb-0.5">
+                  Exams Completed
+                </p>
+                <p className="text-foreground text-xl font-bold">
+                  {examScores.length}
+                </p>
               </div>
             </div>
 
             {/* Average Score - Sky Blue */}
-            <div className="ios-card ios-card-hover p-6 relative overflow-hidden group bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 border border-blue-200 dark:border-blue-700/50">
-              <div className="relative">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 p-3 rounded-xl shadow-lg group-hover:shadow-blue-600/50 dark:group-hover:shadow-blue-700/50 transition-all duration-300">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-blue-700 dark:text-blue-400 text-xs font-bold bg-blue-200/50 dark:bg-blue-900/50 px-3 py-1.5 rounded-full">+8pts</span>
-                </div>
-                <p className="text-blue-600 dark:text-blue-400 text-sm mb-1 font-semibold">Average Score</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-blue-900 dark:text-blue-100 text-4xl font-bold">{averageScore}</p>
-                  <span className="text-blue-600 dark:text-blue-400 text-lg">%</span>
-                </div>
-                <div className="mt-3 w-full bg-blue-100/50 dark:bg-blue-900/30 rounded-full h-1.5">
-                  <div
-                    className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 h-1.5 rounded-full transition-all duration-500 shadow-lg shadow-blue-600/50 dark:shadow-blue-700/50"
-                    style={{ width: `${averageScore}%` }}
-                  ></div>
-                </div>
+            <div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+              <div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+                <TrendingUp className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-muted-foreground text-sm font-medium mb-0.5">
+                  Average Score
+                </p>
+                <p className="text-foreground text-xl font-bold">
+                  {averageScore}%
+                </p>
               </div>
             </div>
 
             {/* Study Streak - Deep Blue */}
-            <div className="ios-card ios-card-hover p-6 relative overflow-hidden group bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/20 border border-blue-300 dark:border-blue-700/50">
-              <div className="relative">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 p-3 rounded-xl shadow-lg group-hover:shadow-blue-700/50 dark:group-hover:shadow-blue-800/50 transition-all duration-300">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-blue-700 dark:text-blue-400 text-xs font-bold bg-blue-200/50 dark:bg-blue-900/50 px-3 py-1.5 rounded-full">🔥</span>
-                </div>
-                <p className="text-blue-600 dark:text-blue-400 text-sm mb-1 font-semibold">Study Streak</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-blue-900 dark:text-blue-100 text-4xl font-bold">42</p>
-                  <span className="text-blue-600 dark:text-blue-400 text-lg">days</span>
-                </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-blue-700 dark:text-blue-400 font-semibold">
-                  <Zap className="w-4 h-4" />
-                  <span>Keep it up!</span>
-                </div>
+            <div className="ios-card p-5 flex items-center gap-4 rounded-3xl relative overflow-hidden">
+              <div className="p-4 rounded-full" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+                <Zap className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-muted-foreground text-sm font-medium mb-0.5">
+                  Study Streak
+                </p>
+                <p className="text-foreground text-xl font-bold">
+                  42 days
+                </p>
               </div>
             </div>
           </div>
@@ -222,13 +180,13 @@ export function Dashboard() {
             {/* Left Column - Charts (Takes 2 columns) */}
             <div className="lg:col-span-2 space-y-8">
               {/* Weekly Progress Chart */}
-              <div className="ios-card card-elevated p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="ios-card card-elevated p-8">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className="text-foreground mb-1">Weekly Progress</h2>
                     <p className="text-muted-foreground text-sm">Your performance over time</p>
                   </div>
-                  <div className="p-2 bg-primary/10 rounded-xl">
+                  <div className="p-2 rounded-xl" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
                     <TrendingUp className="w-5 h-5 text-primary" />
                   </div>
                 </div>
@@ -260,7 +218,7 @@ export function Dashboard() {
                         border: '1px solid var(--border)',
                         borderRadius: '16px',
                         color: 'var(--foreground)',
-                        boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.2)'
+                        boxShadow: 'none'
                       }}
                     />
                     <Area
@@ -285,14 +243,14 @@ export function Dashboard() {
               </div>
 
               {/* Skills Breakdown Chart */}
-              <div className="ios-card card-elevated p-8 hover:shadow-2xl transition-all duration-300">
+              <div className="ios-card card-elevated p-8">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className="text-foreground mb-1">Skills Breakdown</h2>
                     <p className="text-muted-foreground text-sm">Your strengths across areas</p>
                   </div>
-                  <div className="p-2 bg-accent/10 rounded-xl">
-                    <Award className="w-5 h-5 text-accent" />
+                  <div className="p-2 rounded-xl" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
+                    <Award className="w-5 h-5 text-primary" />
                   </div>
                 </div>
                 <ResponsiveContainer width="100%" height={280}>
@@ -324,8 +282,8 @@ export function Dashboard() {
                         borderRadius: '12px',
                         padding: '12px 16px',
                         color: 'var(--foreground)',
-                        boxShadow: '0 4px 20px rgba(59, 130, 246, 0.15)',
-                        fontWeight: '500'
+                        fontWeight: '500',
+                        boxShadow: 'none'
                       }}
                       labelStyle={{
                         color: 'var(--foreground)',
@@ -358,7 +316,7 @@ export function Dashboard() {
               <div className="ios-card card-elevated p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-foreground">Agenda</h3>
-                  <a href="/plan" className="text-xs text-primary hover:text-accent transition-colors font-medium">
+                  <a href="/plan" className="text-xs text-primary transition-colors font-medium">
                     View All
                   </a>
                 </div>
@@ -368,11 +326,11 @@ export function Dashboard() {
                     todaySchedules.map((schedule) => (
                       <div
                         key={schedule.id}
-                        className={`p-4 rounded-xl border-l-4 ${schedule.color} transition-all hover:shadow-md cursor-pointer`}
+                        className={`p-4 rounded-xl border-l-4 ${schedule.color} transition-all cursor-pointer`}
                       >
                         <div className="flex items-start gap-3">
                           <div className="flex-shrink-0">
-                            <div className="w-10 h-10 rounded-lg bg-white/50 dark:bg-black/20 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}>
                               <Clock className="w-5 h-5 text-primary" />
                             </div>
                           </div>
@@ -424,11 +382,11 @@ export function Dashboard() {
                     {examScores.map((exam, index) => (
                       <tr
                         key={index}
-                        className="border-b border-border/50 hover:bg-muted/30 transition-all duration-200 group cursor-pointer"
+                        className="border-b border-border/50 transition-all duration-200 cursor-pointer"
                       >
-                        <td className="py-4 px-4 text-foreground font-medium group-hover:text-primary transition-colors">{exam.date}</td>
+                        <td className="py-4 px-4 text-foreground font-medium">{exam.date}</td>
                         <td className="py-4 px-4">
-                          <span className="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-xl font-semibold shadow-sm">
+                          <span className="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-xl font-semibold">
                             {exam.level}
                           </span>
                         </td>
@@ -445,7 +403,7 @@ export function Dashboard() {
                           </div>
                         </td>
                         <td className="py-4 px-4">
-                          <span className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold shadow-sm ${exam.score >= 70
+                          <span className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold ${exam.score >= 70
                               ? 'badge-success'
                               : 'badge-warning'
                             }`}>
@@ -459,17 +417,17 @@ export function Dashboard() {
               </div>
             ) : (
               <div className="text-center py-20">
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-muted to-muted/50 rounded-3xl mb-6 shadow-lg">
+                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-muted to-muted/50 rounded-3xl mb-6">
                   <Award className="w-12 h-12 text-muted-foreground" />
                 </div>
                 <p className="text-foreground text-xl font-semibold mb-2">No exam results yet</p>
                 <p className="text-muted-foreground text-sm mb-8 max-w-sm mx-auto">Take your first exam to see your progress and track your learning journey!</p>
                 <a
                   href="/exam"
-                  className="inline-flex items-center gap-2 gradient-primary text-white px-8 py-4 rounded-2xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 font-semibold group"
+                  className="inline-flex items-center gap-2 gradient-primary text-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold group"
                 >
                   Take Your First Exam
-                  <TrendingUp className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <TrendingUp className="w-5 h-5 transition-transform" />
                 </a>
               </div>
             )}

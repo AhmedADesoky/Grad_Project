@@ -81,8 +81,8 @@
     --popover: rgba(30, 41, 59, 0.9);
     --popover-foreground: #F8FAFC;
 
-    /* Primary - Bright Cyan */
-    --primary: #22D3EE;
+    /* Primary - Bright Blue */
+    --primary: #60a5fa;
     --primary-foreground: #0F172A;
 
     /* Secondary - Teal */
@@ -171,13 +171,13 @@
 
 @layer utilities {
   .gradient-primary {
-    /* White to Blue Gradient */
-    background: linear-gradient(135deg, #dbeafe 0%, #60a5fa 50%, #3b82f6 100%);
+    /* Solid Primary Blue */
+    background: var(--primary);
   }
 
   .dark .gradient-primary {
-    /* Light Blue to Deep Blue */
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+    /* Solid Primary Blue */
+    background: var(--primary);
   }
 
   .gradient-secondary {
@@ -212,7 +212,6 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
   .glass-effect-dark {
@@ -220,7 +219,6 @@
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(148, 163, 184, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   /* Navbar - Professional Glassy */
@@ -228,24 +226,20 @@
     background: rgba(255, 255, 255, 0.7) !important;
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   }
 
   .dark nav {
     background: rgba(15, 23, 42, 0.7) !important;
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
   }
 
   /* Active Nav Item Glow */
   nav a[class*="gradient-primary"],
   nav button[class*="gradient-primary"] {
-    box-shadow: 0 4px 20px rgba(44, 44, 46, 0.3);
   }
 
   .dark nav a[class*="gradient-primary"] {
-    box-shadow: 0 4px 25px rgba(34, 211, 238, 0.5);
   }
 
   .ios-card {
@@ -254,7 +248,6 @@
     -webkit-backdrop-filter: blur(12px);
     border-radius: 1.5rem;
     border: 1px solid rgba(191, 219, 254, 0.3);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
   }
 
@@ -262,28 +255,22 @@
     background: rgba(30, 41, 59, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(71, 85, 105, 0.3);
     transition: all 0.3s ease;
   }
 
   .ios-card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(59, 130, 246, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
     border-color: rgba(59, 130, 246, 0.4);
   }
 
   .dark .ios-card-hover:hover {
-    box-shadow: 0 20px 48px rgba(34, 211, 238, 0.25), 0 4px 16px rgba(0, 0, 0, 0.5);
     border-color: rgba(34, 211, 238, 0.5);
   }
 
   .shadow-glow {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.2), 0 0 80px rgba(147, 197, 253, 0.15);
   }
 
   .dark .shadow-glow {
-    box-shadow: 0 0 40px rgba(96, 165, 250, 0.4), 0 0 80px rgba(59, 130, 246, 0.25);
   }
 
   .text-gradient {
@@ -438,15 +425,9 @@
 
 /* Professional Enhancements */
 .card-elevated {
-  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.12),
-    0 4px 16px rgba(96, 165, 250, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .dark .card-elevated {
-  box-shadow: 0 12px 48px rgba(30, 64, 175, 0.4),
-    0 4px 16px rgba(59, 130, 246, 0.2),
-    inset 0 1px 0 rgba(147, 197, 253, 0.1);
 }
 
 .backdrop-blur-glass {
@@ -472,18 +453,18 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: #f1f5f9;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: #c1c9d6;
   border-radius: 10px;
-  border: 2px solid var(--muted);
+  border: 2px solid #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: #9ca3af;
 }
 
 /* Selection styling */
@@ -555,12 +536,10 @@ table tr:hover {
   border-radius: 1rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
 }
 
 .btn-primary:active {
@@ -573,7 +552,6 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
 /* Enhanced tooltip styles with blue theme */

@@ -70,7 +70,7 @@
   --popover: #1E293B;
   --popover-foreground: #F1F5F9;
   /* Primary - Bright Blue */
-  --primary: #3b82f6;
+  --primary: #60a5fa;
   --primary-foreground: #FFFFFF;
   /* Secondary */
   --secondary: #60a5fa;
@@ -276,7 +276,7 @@ html {
 /* Custom Utility Classes - iOS Inspired */
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+    background: var(--primary);
   }
 
   .gradient-secondary {
@@ -326,20 +326,24 @@ html {
   }
 
   .ios-card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: none;
   }
 
   .ios-card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .card-elevated {
+    box-shadow: none;
   }
 
   .shadow-glow {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+    box-shadow: none;
   }
 
   .shadow-glow-dark {
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+    box-shadow: none;
   }
 
   .text-gradient {

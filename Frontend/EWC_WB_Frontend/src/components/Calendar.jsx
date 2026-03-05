@@ -60,7 +60,7 @@ export function Calendar({ schedules = [] }) {
         key={day}
         className={`aspect-square flex items-center justify-center rounded-lg text-sm font-medium transition-all cursor-pointer relative
           ${isToday 
-            ? 'bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/30 scale-105' 
+            ? 'bg-gradient-to-br from-primary to-accent text-white scale-105' 
             : hasEvent
             ? 'bg-info/10 text-info hover:bg-info/20'
             : 'text-foreground hover:bg-muted/50'

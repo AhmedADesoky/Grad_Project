@@ -109,7 +109,7 @@ export function PersonalizedPlan() {
                     return (
                       <div
                         key={dayPlan.day}
-                        className={`border-2 rounded-xl p-6 transition-all hover:shadow-lg ${allCompleted
+                        className={`border-2 rounded-xl p-6 transition-all ${allCompleted
                             ? 'border-success/30 bg-success/5'
                             : 'border-border bg-card/50'
                           }`}
@@ -118,7 +118,7 @@ export function PersonalizedPlan() {
                         <div className="flex items-center justify-between mb-5">
                           <div className="flex items-center gap-3">
                             <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-semibold ${allCompleted
-                                ? 'gradient-primary text-white shadow-lg'
+                                ? 'gradient-primary text-white'
                                 : someCompleted
                                   ? 'bg-primary/20 text-primary'
                                   : 'bg-muted text-muted-foreground'
@@ -183,8 +183,8 @@ export function PersonalizedPlan() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                    <div className="gradient-primary p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
+                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary transition-all cursor-pointer">
+                    <div className="gradient-primary p-3 rounded-xl transition-all flex-shrink-0">
                       <BookOpen className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -193,8 +193,8 @@ export function PersonalizedPlan() {
                     </div>
                   </div>
 
-                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                    <div className="bg-gradient-to-br from-accent to-primary p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
+                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary transition-all cursor-pointer">
+                    <div className="bg-gradient-to-br from-accent to-primary p-3 rounded-xl transition-all flex-shrink-0">
                       <BookOpen className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -203,8 +203,8 @@ export function PersonalizedPlan() {
                     </div>
                   </div>
 
-                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                    <div className="bg-gradient-to-br from-secondary to-accent p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
+                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary transition-all cursor-pointer">
+                    <div className="bg-gradient-to-br from-secondary to-accent p-3 rounded-xl transition-all flex-shrink-0">
                       <BookOpen className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -213,8 +213,8 @@ export function PersonalizedPlan() {
                     </div>
                   </div>
 
-                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary hover:shadow-lg transition-all cursor-pointer">
-                    <div className="bg-gradient-to-br from-info to-primary p-3 rounded-xl group-hover:shadow-primary/30 transition-all flex-shrink-0">
+                  <div className="group flex items-center gap-4 p-5 border-2 border-border rounded-xl hover:border-primary transition-all cursor-pointer">
+                    <div className="bg-gradient-to-br from-info to-primary p-3 rounded-xl transition-all flex-shrink-0">
                       <BookOpen className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -264,7 +264,7 @@ export function PersonalizedPlan() {
               </div>
 
               {/* Study Streak */}
-              <div className="gradient-primary rounded-xl p-6 text-white shadow-xl shadow-primary/20 relative overflow-hidden">
+              <div className="gradient-primary rounded-xl p-6 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-4">

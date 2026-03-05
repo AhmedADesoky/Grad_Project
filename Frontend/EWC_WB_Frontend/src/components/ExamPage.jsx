@@ -87,7 +87,7 @@ export function ExamPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 pt-24">
             <div className="ios-card p-8 animate-fade-in">
               <div className="flex items-center gap-4 mb-8">
-                <div className="gradient-primary p-5 rounded-xl shadow-xl shadow-primary/20">
+                <div className="gradient-primary p-5 rounded-xl">
                   <FileText className="w-12 h-12 text-white" />
                 </div>
                 <div>
@@ -142,7 +142,7 @@ export function ExamPage() {
 
               <button
                 onClick={handleStartExam}
-                className="w-full gradient-primary text-white py-5 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group font-semibold text-lg"
+                className="w-full gradient-primary text-white py-5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group font-semibold text-lg"
               >
                 Start Exam
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -165,7 +165,7 @@ export function ExamPage() {
         <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-64'}`}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 pt-24">
             <div className="ios-card p-10 text-center animate-fade-in">
-              <div className={`${passed ? 'bg-success/20' : 'bg-warning/20'} w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl`}>
+              <div className={`${passed ? 'bg-success/20' : 'bg-warning/20'} w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-6`}>
                 {passed ? (
                   <CheckCircle className="w-14 h-14 text-success" />
                 ) : (
@@ -175,7 +175,7 @@ export function ExamPage() {
 
               <h1 className="text-foreground mb-6">Exam Completed!</h1>
 
-              <div className="gradient-primary rounded-xl p-10 mb-8 shadow-2xl shadow-primary/20 relative overflow-hidden">
+              <div className="gradient-primary rounded-xl p-10 mb-8 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
                 <div className="relative">
                   <p className="text-white/90 mb-2 font-medium">Your Score</p>
@@ -195,13 +195,13 @@ export function ExamPage() {
                     setExamStarted(false);
                     setSubmitted(false);
                   }}
-                  className="bg-card border-2 border-border text-foreground px-8 py-4 rounded-xl hover:bg-muted transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  className="bg-card border-2 border-border text-foreground px-8 py-4 rounded-xl hover:bg-muted transition-all duration-300 font-semibold"
                 >
                   Back to Exam Info
                 </button>
                 <a
                   href="/dashboard"
-                  className="gradient-primary text-white px-8 py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 shadow-lg font-semibold"
+                  className="gradient-primary text-white px-8 py-4 rounded-xl transition-all duration-300 font-semibold"
                 >
                   View Dashboard
                 </a>
@@ -260,7 +260,7 @@ export function ExamPage() {
             <div className="mt-8 flex justify-end">
               <button
                 onClick={handleSubmit}
-                className="flex items-center gap-2 gradient-primary text-white px-10 py-4 rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group font-semibold text-lg"
+                className="flex items-center gap-2 gradient-primary text-white px-10 py-4 rounded-xl transition-all duration-300 group font-semibold text-lg"
               >
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 Submit Exam

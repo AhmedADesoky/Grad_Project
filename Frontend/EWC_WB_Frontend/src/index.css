@@ -249,31 +249,32 @@
   }
 
   .ios-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 1.5rem;
-    border: 1px solid rgba(209, 213, 219, 0.6);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(191, 219, 254, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
   }
 
   .dark .ios-card {
-    background: rgba(30, 41, 59, 0.5);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(71, 85, 105, 0.4);
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    transition: all 0.3s ease;
   }
 
   .ios-card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-    border-color: rgba(44, 44, 46, 0.5);
+    box-shadow: 0 16px 48px rgba(59, 130, 246, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: rgba(59, 130, 246, 0.4);
   }
 
   .dark .ios-card-hover:hover {
-    box-shadow: 0 20px 48px rgba(34, 211, 238, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 48px rgba(34, 211, 238, 0.25), 0 4px 16px rgba(0, 0, 0, 0.5);
     border-color: rgba(34, 211, 238, 0.5);
   }
 
@@ -286,14 +287,12 @@
   }
 
   .text-gradient {
-    background: linear-gradient(
-      135deg,
-      #ffffff 0%,
-      #dbeafe 25%,
-      #93c5fd 50%,
-      #60a5fa 75%,
-      #3b82f6 100%
-    );
+    background: linear-gradient(135deg,
+        #ffffff 0%,
+        #dbeafe 25%,
+        #93c5fd 50%,
+        #60a5fa 75%,
+        #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -302,14 +301,12 @@
   }
 
   .dark .text-gradient {
-    background: linear-gradient(
-      135deg,
-      #dbeafe 0%,
-      #93c5fd 25%,
-      #60a5fa 50%,
-      #3b82f6 75%,
-      #2563eb 100%
-    );
+    background: linear-gradient(135deg,
+        #dbeafe 0%,
+        #93c5fd 25%,
+        #60a5fa 50%,
+        #3b82f6 75%,
+        #2563eb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -318,8 +315,15 @@
   }
 
   @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
   .ios-button {
@@ -348,8 +352,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
@@ -361,6 +372,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -372,8 +384,17 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 
 .animate-pulse {
@@ -381,24 +402,34 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: -1000px 0; }
-  100% { background-position: 1000px 0; }
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
 }
 
 .animate-shimmer {
   animation: shimmer 2s infinite linear;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
   background-size: 1000px 100%;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-float {
@@ -407,15 +438,15 @@
 
 /* Professional Enhancements */
 .card-elevated {
-  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.12), 
-              0 4px 16px rgba(96, 165, 250, 0.08),
-              inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.12),
+    0 4px 16px rgba(96, 165, 250, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .dark .card-elevated {
-  box-shadow: 0 12px 48px rgba(30, 64, 175, 0.4), 
-              0 4px 16px rgba(59, 130, 246, 0.2),
-              inset 0 1px 0 rgba(147, 197, 253, 0.1);
+  box-shadow: 0 12px 48px rgba(30, 64, 175, 0.4),
+    0 4px 16px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(147, 197, 253, 0.1);
 }
 
 .backdrop-blur-glass {
@@ -477,13 +508,11 @@ table tr:hover {
 
 /* Skeleton loader */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--muted) 0%,
-    var(--muted-foreground) 20%,
-    var(--muted) 40%,
-    var(--muted) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--muted) 0%,
+      var(--muted-foreground) 20%,
+      var(--muted) 40%,
+      var(--muted) 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 0.5rem;
@@ -604,6 +633,7 @@ select:focus {
     opacity: 0;
     transform: translateY(-50%) translateX(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(-50%) translateX(0);

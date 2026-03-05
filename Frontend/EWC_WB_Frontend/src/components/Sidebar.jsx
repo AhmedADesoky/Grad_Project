@@ -1,32 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { BookOpen, BarChart3, FileText, Calendar, User, LogOut, Sun, Moon, Inbox, Book, Users, Home, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BookOpen, BarChart3, FileText, Calendar, User, LogOut, Home, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { useTheme } from '../contexts/ThemeContext';
 import { useSidebar } from '../contexts/SidebarContext';
 
 export function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logout, user } = useAuth();
-  const { isDark, toggleTheme } = useTheme();
+  const { logout } = useAuth();
   const { isCollapsed, toggleSidebar } = useSidebar();
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const tooltipElements = document.querySelectorAll('[data-tooltip]');
-      tooltipElements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= e.clientY && e.clientY <= rect.bottom &&
-            rect.left <= e.clientX && e.clientX <= rect.right) {
-          document.documentElement.style.setProperty('--mouse-y', `${rect.top + rect.height / 2}px`);
-        }
-      });
-    };
-    
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const handleLogout = () => {
     logout();
@@ -38,95 +20,77 @@ export function Sidebar() {
     { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
     { path: '/exam', label: 'Exam', icon: FileText },
     { path: '/plan', label: 'Plan', icon: Calendar },
+    { path: '/chat', label: 'Chatbot', icon: MessageSquare },
     { path: '/profile', label: 'Profile', icon: User },
   ];
 
   return (
-    <div className={`fixed left-0 top-0 h-screen transition-all duration-300 z-40 ${isCollapsed ? 'w-20' : 'w-64'}`} style={{ overflow: 'visible' }}>
-      <div className="absolute inset-0 flex flex-col">
-        <div className="absolute inset-0 bg-card/80 backdrop-blur-2xl border-r border-border shadow-lg -z-10"></div>
-        <div className="flex-1 overflow-y-auto" style={{ overflowX: 'hidden' }}>
-      {/* Header */}
-      <div className="p-6 border-b border-border/50">
-        <Link to="/main" className="flex items-center gap-3 group" {...(isCollapsed && { 'data-tooltip': 'English Coach' })}>
-          <div className="gradient-primary p-3 rounded-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110 flex-shrink-0">
-            <BookOpen className="w-6 h-6 text-white" />
-          </div>
-          {!isCollapsed && (
-            <span className="text-foreground font-bold text-lg tracking-tight whitespace-nowrap">English Coach</span>
-          )}
-        </Link>
-      </div>
+    <div className={`fixed left-0 top-0 h-screen transition-all duration-300 z-40 ${isCollapsed ? 'w-20' : 'w-64'}`}>
 
-      {/* Overview Section */}
-      <div className="p-6">
-        {!isCollapsed && (
-          <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Overview</h3>
-        )}
-        <div className="space-y-2">
-          {overviewItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = location.pathname === item.path;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                  isActive
-                    ? 'gradient-primary text-white shadow-lg shadow-primary/40 scale-105'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:scale-102'
-                } ${isCollapsed ? 'justify-center' : ''}`}
-                {...(isCollapsed && { 'data-tooltip': item.label })}
-              >
-                <Icon className="w-5 h-5 flex-shrink-0" />
-                {!isCollapsed && (
-                  <span className="font-semibold text-sm whitespace-nowrap">{item.label}</span>
-                )}
-              </Link>
-            );
-          })}
+      {/* Floating Collapse Button */}
+      <button
+        onClick={toggleSidebar}
+        className="absolute -right-3.5 top-6 z-50 w-7 h-7 bg-white dark:bg-slate-800 rounded-full shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+        title={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
+      >
+        {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+      </button>
+
+      <div className="absolute inset-0 flex flex-col bg-white dark:bg-slate-900">
+        {/* Header */}
+        <div className="p-5 flex-shrink-0">
+          <Link to="/main" className="flex items-center gap-3 group">
+            <div className="bg-[#3b82f6] p-2.5 rounded-xl flex-shrink-0">
+              <BookOpen className="w-5 h-5 text-white" />
+            </div>
+            {!isCollapsed && (
+              <span className="text-foreground font-bold text-base tracking-tight whitespace-nowrap">English Coach</span>
+            )}
+          </Link>
         </div>
-      </div>
 
-      {/* Settings Section */}
-      <div className="p-6 border-t border-border/50 mt-auto mb-8">
-        {!isCollapsed && (
-          <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Settings</h3>
-        )}
-        <div className="space-y-2">
-          <button
-            onClick={toggleSidebar}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300 hover:scale-102 ${isCollapsed ? 'justify-center' : ''}`}
-            {...(isCollapsed && { 'data-tooltip': 'Expand Sidebar' })}
-          >
-            {isCollapsed ? <ChevronRight className="w-5 h-5 flex-shrink-0" /> : <ChevronLeft className="w-5 h-5 flex-shrink-0" />}
-            {!isCollapsed && (
-              <span className="font-semibold text-sm whitespace-nowrap">Collapse Sidebar</span>
-            )}
-          </button>
-          <button
-            onClick={toggleTheme}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300 hover:scale-102 ${isCollapsed ? 'justify-center' : ''}`}
-            {...(isCollapsed && { 'data-tooltip': isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode' })}
-          >
-            {isDark ? <Sun className="w-5 h-5 flex-shrink-0" /> : <Moon className="w-5 h-5 flex-shrink-0" />}
-            {!isCollapsed && (
-              <span className="font-semibold text-sm whitespace-nowrap">{isDark ? 'Light Mode' : 'Dark Mode'}</span>
-            )}
-          </button>
+        {/* Nav Items */}
+        <div className="flex-1 overflow-y-auto no-scrollbar p-4">
+          {!isCollapsed && (
+            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-3 px-2">Overview</h3>
+          )}
+          <div className="space-y-1">
+            {overviewItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  title={isCollapsed ? item.label : undefined}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${isActive
+                    ? 'bg-[#3b82f6] text-white'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                    } ${isCollapsed ? 'justify-center' : ''}`}
+                >
+                  <Icon className="w-5 h-5 flex-shrink-0" />
+                  {!isCollapsed && (
+                    <span className="font-medium text-sm whitespace-nowrap">{item.label}</span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom: Logout only */}
+        <div className="p-4 flex-shrink-0">
           <button
             onClick={handleLogout}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-destructive hover:bg-destructive/10 transition-all duration-300 hover:scale-102 ${isCollapsed ? 'justify-center' : ''}`}
-            {...(isCollapsed && { 'data-tooltip': 'Logout' })}
+            title={isCollapsed ? 'Logout' : undefined}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-destructive hover:bg-destructive/10 transition-all duration-200 ${isCollapsed ? 'justify-center' : ''}`}
           >
             <LogOut className="w-5 h-5 flex-shrink-0" />
             {!isCollapsed && (
-              <span className="font-semibold text-sm whitespace-nowrap">Logout</span>
+              <span className="font-medium text-sm whitespace-nowrap">Logout</span>
             )}
           </button>
         </div>
-      </div>
-      </div>
       </div>
     </div>
   );

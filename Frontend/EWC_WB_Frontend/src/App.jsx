@@ -9,6 +9,7 @@ import { Dashboard } from './components/Dashboard';
 import { ExamPage } from './components/ExamPage';
 import { PersonalizedPlan } from './components/PersonalizedPlan';
 import { ProfilePage } from './components/ProfilePage';
+import { ChatScreen } from './components/ChatScreen';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -25,6 +26,7 @@ function AppRoutes() {
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/exam" element={<ProtectedRoute><ExamPage /></ProtectedRoute>} />
       <Route path="/plan" element={<ProtectedRoute><PersonalizedPlan /></ProtectedRoute>} />
+      <Route path="/chat" element={<ProtectedRoute><ChatScreen /></ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
     </Routes>
   );
@@ -32,7 +34,7 @@ function AppRoutes() {
 
 export default function App() {
   console.log('App component rendering');
-  
+
   try {
     return (
       <Router>

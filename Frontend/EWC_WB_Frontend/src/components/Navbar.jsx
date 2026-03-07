@@ -17,7 +17,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 right-0 z-30 h-16 bg-white dark:bg-slate-900 flex items-center justify-end px-6 gap-10 transition-all duration-300 ${isCollapsed ? 'left-20' : 'left-64'
+      className={`fixed top-0 right-0 z-30 h-16 bg-background flex items-center justify-end px-6 gap-10 transition-all duration-300 ${isCollapsed ? 'left-20' : 'left-64'
         }`}
     >
       {/* Theme Toggle */}

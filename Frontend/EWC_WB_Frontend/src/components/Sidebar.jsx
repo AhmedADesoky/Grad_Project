@@ -34,7 +34,7 @@ export function Sidebar() {
         {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
       </button>
 
-      <div className="absolute inset-0 flex flex-col bg-white dark:bg-slate-900">
+      <div className="absolute inset-0 flex flex-col bg-background">
         {/* Header */}
         <div className="p-5 flex-shrink-0">
           <Link to="/main" className="flex items-center gap-3 group">

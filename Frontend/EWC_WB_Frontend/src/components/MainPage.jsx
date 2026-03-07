@@ -237,6 +237,7 @@ export function MainPage() {
 							))}
 						</div>
 					</div>
+				</div>
 
 				{/* Personalized Learning Plan Section */}
 				<div className="mb-12">

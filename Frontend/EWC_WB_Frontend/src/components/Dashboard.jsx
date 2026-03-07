@@ -294,6 +294,7 @@ export function Dashboard() {
                         color: 'var(--primary)',
                         fontWeight: '600'
                       }}
+                      cursor={{ fill: 'transparent' }}
                     />
                     <Bar
                       dataKey="score"

@@ -1,0 +1,205 @@
+<svg viewBox="0 0 1100 820" xmlns="http://www.w3.org/2000/svg" style="background:#f8fafc;font-family:Inter,system-ui,sans-serif;">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/></marker>
+    <marker id="arr-gray" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#10b981"/></marker>
+  </defs>
+  <rect width="1100" height="820" fill="#f8fafc" rx="12"/>
+  <text x="550" y="32" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">EWC — English Writing Coach · System Architecture</text>
+
+  <!-- Layer label bands -->
+  <rect x="14" y="52" width="94" height="168" rx="8" fill="#ede9fe" opacity="0.6"/>
+  <text x="61" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#7c3aed" letter-spacing="0.08em">CLIENT</text>
+  <rect x="14" y="234" width="94" height="84" rx="8" fill="#dbeafe" opacity="0.6"/>
+  <text x="61" y="254" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8" letter-spacing="0.08em">API</text>
+  <rect x="14" y="332" width="94" height="298" rx="8" fill="#dcfce7" opacity="0.6"/>
+  <text x="61" y="352" text-anchor="middle" font-size="10" font-weight="700" fill="#15803d" letter-spacing="0.08em">BACKEND</text>
+  <rect x="14" y="644" width="94" height="84" rx="8" fill="#fef9c3" opacity="0.6"/>
+  <text x="61" y="664" text-anchor="middle" font-size="10" font-weight="700" fill="#a16207" letter-spacing="0.08em">DATA</text>
+  <rect x="14" y="742" width="94" height="64" rx="8" fill="#fce7f3" opacity="0.6"/>
+  <text x="61" y="762" text-anchor="middle" font-size="10" font-weight="700" fill="#be185d" letter-spacing="0.08em">EXTERNAL</text>
+
+  <!-- Frontend section -->
+  <rect x="118" y="52" width="960" height="172" rx="10" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="134" y="72" font-size="12" font-weight="700" fill="#334155">React + Vite Frontend</text>
+  <text x="134" y="87" font-size="9.5" fill="#94a3b8">localhost:5173  ·  Tailwind CSS  ·  React Router  ·  Context API</text>
+  <rect x="130" y="96" width="108" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="184" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">AuthPage</text>
+  <text x="184" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Login · Register</text>
+  <rect x="248" y="96" width="108" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="302" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">MainPage</text>
+  <text x="302" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Home · Dashboard</text>
+  <rect x="366" y="96" width="108" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="420" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">ChatScreen</text>
+  <text x="420" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">AI Chat · Sessions</text>
+  <rect x="484" y="96" width="108" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="538" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">ExamPage</text>
+  <text x="538" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Quiz · Scoring</text>
+  <rect x="602" y="96" width="118" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="661" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">PersonalizedPlan</text>
+  <text x="661" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Weekly Plan · Tasks</text>
+  <rect x="730" y="96" width="118" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="789" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">PDF_Extraction</text>
+  <text x="789" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Upload · Analysis</text>
+  <rect x="858" y="96" width="108" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="912" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">ProfilePage</text>
+  <text x="912" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Settings · Level</text>
+  <rect x="976" y="96" width="96" height="44" rx="7" fill="#fff" stroke="#c7d2fe" stroke-width="1.2"/>
+  <text x="1024" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#4338ca">Dashboard</text>
+  <text x="1024" y="129" text-anchor="middle" font-size="8.5" fill="#94a3b8">Analytics</text>
+  <rect x="130" y="150" width="942" height="28" rx="6" fill="#ede9fe" stroke="#ddd6fe" stroke-width="1"/>
+  <text x="152" y="163" font-size="9" font-weight="600" fill="#6d28d9">Contexts: </text>
+  <text x="210" y="163" font-size="9" fill="#7c3aed">AuthContext · ThemeContext · AnalyticsContext · ToastContext</text>
+  <text x="490" y="163" font-size="9" fill="#94a3b8">  |  GraphQL Clients: </text>
+  <text x="594" y="163" font-size="9" fill="#7c3aed">UserServer.js · AIService.js · Client.js (JWT + auto-refresh)</text>
+
+  <!-- API Layer -->
+  <rect x="118" y="234" width="455" height="78" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="134" y="254" font-size="12" font-weight="700" fill="#1e40af">User GraphQL API</text>
+  <text x="134" y="269" font-size="9.5" fill="#94a3b8">Node.js · Express · graphql-http  ·  port 4000</text>
+  <rect x="134" y="275" width="120" height="26" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="194" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#1d4ed8">Auth / Users</text>
+  <rect x="264" y="275" width="120" height="26" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="324" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#1d4ed8">Exam Scores</text>
+  <rect x="394" y="275" width="164" height="26" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="476" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#1d4ed8">Progress / Analytics</text>
+  <rect x="583" y="234" width="495" height="78" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="599" y="254" font-size="12" font-weight="700" fill="#166534">AI GraphQL API</text>
+  <text x="599" y="269" font-size="9.5" fill="#94a3b8">Django · Strawberry GraphQL  ·  port 8000</text>
+  <rect x="599" y="275" width="90" height="26" rx="5" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="644" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#166534">Chat</text>
+  <rect x="699" y="275" width="90" height="26" rx="5" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="744" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#166534">Exam</text>
+  <rect x="799" y="275" width="90" height="26" rx="5" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="844" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#166534">Plan</text>
+  <rect x="899" y="275" width="170" height="26" rx="5" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="984" y="292" text-anchor="middle" font-size="9" font-weight="600" fill="#166534">PDF / AI Detection</text>
+
+  <!-- User Backend -->
+  <rect x="118" y="332" width="455" height="128" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="134" y="352" font-size="12" font-weight="700" fill="#334155">User Backend</text>
+  <text x="218" y="352" font-size="9.5" fill="#94a3b8">Node.js · Mongoose · JWT · bcrypt · Nodemailer</text>
+  <rect x="134" y="360" width="100" height="40" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="184" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Auth Service</text>
+  <text x="184" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">Login·Register·JWT</text>
+  <rect x="244" y="360" width="100" height="40" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="294" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">User Service</text>
+  <text x="294" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">Profile·Level·Progress</text>
+  <rect x="354" y="360" width="100" height="40" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="404" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Email Service</text>
+  <text x="404" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">Verify·Reset</text>
+  <rect x="464" y="360" width="100" height="40" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="514" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Rate Limiter</text>
+  <text x="514" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">Chat·Exam·Plan</text>
+  <rect x="134" y="408" width="430" height="40" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="150" y="424" font-size="9" font-weight="600" fill="#475569">Middleware: authMiddleware · refreshMiddleware · errorHandler</text>
+  <text x="150" y="440" font-size="9" font-weight="600" fill="#475569">Queue: BullMQ · Redis (async email jobs)</text>
+
+  <!-- AI Backend -->
+  <rect x="583" y="332" width="495" height="290" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="599" y="352" font-size="12" font-weight="700" fill="#334155">AI Backend</text>
+  <text x="649" y="352" font-size="9.5" fill="#94a3b8">Django · Strawberry · PyTorch · Transformers · OpenRouter</text>
+  <rect x="599" y="360" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="653" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Chatbot</text>
+  <text x="653" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">Chat_Engine.py</text>
+  <text x="653" y="401" text-anchor="middle" font-size="8" fill="#94a3b8">Intent · RAG · LLM</text>
+  <text x="653" y="411" text-anchor="middle" font-size="7.5" fill="#c4b5fd">→ OpenRouter</text>
+  <rect x="717" y="360" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="771" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Classification</text>
+  <text x="771" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">RoBERTa 125M</text>
+  <text x="771" y="401" text-anchor="middle" font-size="8" fill="#94a3b8">CEFR A1→C2</text>
+  <rect x="835" y="360" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="889" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">AI Detection</text>
+  <text x="889" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">RoBERTa 125M</text>
+  <text x="889" y="401" text-anchor="middle" font-size="8" fill="#94a3b8">Human vs AI 82%</text>
+  <rect x="953" y="360" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="1007" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Exam</text>
+  <text x="1007" y="389" text-anchor="middle" font-size="8" fill="#94a3b8">Question_Generator</text>
+  <text x="1007" y="401" text-anchor="middle" font-size="8" fill="#94a3b8">API_Generator.py</text>
+  <text x="1007" y="411" text-anchor="middle" font-size="7.5" fill="#c4b5fd">→ OpenRouter</text>
+  <rect x="599" y="426" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="653" y="442" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Doc Ingestion</text>
+  <text x="653" y="455" text-anchor="middle" font-size="8" fill="#94a3b8">PDF_Extractor.py</text>
+  <text x="653" y="467" text-anchor="middle" font-size="8" fill="#94a3b8">OCR · Cloudinary</text>
+  <rect x="717" y="426" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="771" y="442" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Plan</text>
+  <text x="771" y="455" text-anchor="middle" font-size="8" fill="#94a3b8">Plan_Generator</text>
+  <text x="771" y="467" text-anchor="middle" font-size="8" fill="#94a3b8">Plan_Adjuster</text>
+  <rect x="835" y="426" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="889" y="442" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Feedback</text>
+  <text x="889" y="455" text-anchor="middle" font-size="8" fill="#94a3b8">Feedback_Model</text>
+  <text x="889" y="467" text-anchor="middle" font-size="8" fill="#94a3b8">Explanation_Gen</text>
+  <rect x="953" y="426" width="108" height="56" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="1007" y="442" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Resources</text>
+  <text x="1007" y="455" text-anchor="middle" font-size="8" fill="#94a3b8">Recommender.py</text>
+  <text x="1007" y="467" text-anchor="middle" font-size="8" fill="#94a3b8">RAG chunks</text>
+  <rect x="599" y="492" width="462" height="26" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="615" y="509" font-size="9" font-weight="600" fill="#475569">Middleware: JWTAuthMiddleware · CORSMiddleware · Strawberry unified schema</text>
+  <rect x="599" y="526" width="462" height="84" rx="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="615" y="543" font-size="9" font-weight="600" fill="#15803d">Django Models (MongoDB via Djongo):</text>
+  <text x="615" y="558" font-size="8.5" fill="#166534">ChatSession · ChatMessage · ExamSession · PersonalizedPlan · DocumentIngestion · FeedbackEntry</text>
+  <text x="615" y="572" font-size="9" font-weight="600" fill="#15803d">Local ML Models:</text>
+  <text x="700" y="572" font-size="8.5" fill="#166534">DistilBERT (66M) · RoBERTa (125M) · TrOCR · EasyOCR</text>
+  <text x="615" y="586" font-size="8.5" fill="#94a3b8">Weights stored in Models_Weights/ directory (local GPU inference)</text>
+  <text x="615" y="602" font-size="8.5" fill="#94a3b8">SQLite for development · MongoDB Atlas for production</text>
+
+  <!-- Data Layer -->
+  <rect x="118" y="644" width="455" height="72" rx="10" fill="#fef9c3" stroke="#fde68a" stroke-width="1.5"/>
+  <text x="134" y="664" font-size="12" font-weight="700" fill="#92400e">MongoDB Atlas — User Backend</text>
+  <rect x="134" y="672" width="90" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="179" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">users</text>
+  <rect x="234" y="672" width="90" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="279" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">exam_scores</text>
+  <rect x="334" y="672" width="100" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="384" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">refresh_tokens</text>
+  <rect x="444" y="672" width="120" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="504" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">usage_counters</text>
+  <rect x="583" y="644" width="495" height="72" rx="10" fill="#fef9c3" stroke="#fde68a" stroke-width="1.5"/>
+  <text x="599" y="664" font-size="12" font-weight="700" fill="#92400e">MongoDB (Djongo) — AI Backend</text>
+  <rect x="599" y="672" width="88" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="643" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">chat_sessions</text>
+  <rect x="697" y="672" width="88" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="741" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">chat_msgs</text>
+  <rect x="795" y="672" width="88" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="839" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">plans</text>
+  <rect x="893" y="672" width="88" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="937" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">documents</text>
+  <rect x="991" y="672" width="78" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="1030" y="689" text-anchor="middle" font-size="9" font-weight="600" fill="#92400e">feedback</text>
+
+  <!-- External -->
+  <rect x="118" y="742" width="960" height="56" rx="10" fill="#fdf4ff" stroke="#f0abfc" stroke-width="1.5"/>
+  <text x="134" y="762" font-size="12" font-weight="700" fill="#86198f">External Services</text>
+  <rect x="134" y="768" width="130" height="22" rx="5" fill="#fae8ff" stroke="#e879f9" stroke-width="1"/>
+  <text x="199" y="783" text-anchor="middle" font-size="9" font-weight="600" fill="#86198f">OpenRouter (LLM)</text>
+  <rect x="274" y="768" width="140" height="22" rx="5" fill="#fae8ff" stroke="#e879f9" stroke-width="1"/>
+  <text x="344" y="783" text-anchor="middle" font-size="9" font-weight="600" fill="#86198f">Cloudinary (PDF/Image)</text>
+  <rect x="424" y="768" width="130" height="22" rx="5" fill="#fae8ff" stroke="#e879f9" stroke-width="1"/>
+  <text x="489" y="783" text-anchor="middle" font-size="9" font-weight="600" fill="#86198f">Nodemailer (SMTP)</text>
+  <rect x="564" y="768" width="140" height="22" rx="5" fill="#fae8ff" stroke="#e879f9" stroke-width="1"/>
+  <text x="634" y="783" text-anchor="middle" font-size="9" font-weight="600" fill="#86198f">MongoDB Atlas (Cloud)</text>
+  <rect x="714" y="768" width="140" height="22" rx="5" fill="#fae8ff" stroke="#e879f9" stroke-width="1"/>
+  <text x="784" y="783" text-anchor="middle" font-size="9" font-weight="600" fill="#86198f">Redis / BullMQ (Queue)</text>
+  <rect x="864" y="768" width="140" height="22" rx="5" fill="#fae8ff" stroke="#e879f9" stroke-width="1"/>
+  <text x="934" y="783" text-anchor="middle" font-size="9" font-weight="600" fill="#86198f">Local ML (GPU/CPU)</text>
+
+  <!-- Arrows -->
+  <line x1="345" y1="224" x2="345" y2="234" stroke="#6366f1" stroke-width="1.6" marker-end="url(#arr)" stroke-dasharray="4,2"/>
+  <text x="350" y="231" font-size="8" fill="#6366f1">GraphQL</text>
+  <line x1="780" y1="224" x2="780" y2="234" stroke="#6366f1" stroke-width="1.6" marker-end="url(#arr)" stroke-dasharray="4,2"/>
+  <text x="785" y="231" font-size="8" fill="#6366f1">GraphQL</text>
+  <line x1="345" y1="312" x2="345" y2="332" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="830" y1="312" x2="830" y2="332" stroke="#22c55e" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="345" y1="460" x2="345" y2="644" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arr-gray)" stroke-dasharray="3,3"/>
+  <line x1="830" y1="622" x2="830" y2="644" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arr-gray)" stroke-dasharray="3,3"/>
+
+  <!-- Legend -->
+  <rect x="830" y="172" width="244" height="54" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="846" y="188" font-size="9" font-weight="700" fill="#475569">Legend</text>
+  <line x1="846" y1="200" x2="866" y2="200" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="872" y="204" font-size="8.5" fill="#64748b">GraphQL request (Bearer JWT)</text>
+  <line x1="846" y1="214" x2="866" y2="214" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="872" y="218" font-size="8.5" fill="#64748b">Internal service call</text>
+  <line x1="846" y1="220" x2="866" y2="220" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="872" y="224" font-size="8.5" fill="#64748b">Database read/write</text>
+</svg>

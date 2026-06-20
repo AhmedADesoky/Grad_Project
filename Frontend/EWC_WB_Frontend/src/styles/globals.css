@@ -1,0 +1,183 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+
+  --background:         #F7F9FC;
+  --foreground:         #0F1C2E;
+  --card:               #FFFFFF;
+  --card-foreground:    #0F1C2E;
+  --popover:            #FFFFFF;
+  --popover-foreground: #0F1C2E;
+
+  /* Primary — brand navy #1B2E4E */
+  --primary:            #1B2E4E;
+  --primary-foreground: #FFFFFF;
+
+  --secondary:          #1D7D58;
+  --secondary-foreground: #FFFFFF;
+  --accent:             #3D2F8C;
+  --accent-foreground:  #FFFFFF;
+
+  --muted:              #EEF2F7;
+  --muted-foreground:   #64748B;
+
+  --destructive:        #C0392B;
+  --destructive-foreground: #FFFFFF;
+  --success:            #1D7D58;
+  --success-foreground: #FFFFFF;
+  --warning:            #B85C0D;
+  --warning-foreground: #FFFFFF;
+  --info:               #1B4D8E;
+  --info-foreground:    #FFFFFF;
+
+  /* Skill colours — navy-family semantic */
+  --skill-grammar:    #1D7D58;
+  --skill-vocab:      #B85C0D;
+  --skill-punct:      #1B4D8E;
+  --skill-overall:    #3D2F8C;
+  --skill-grammar-bg: #E8F5EF;
+  --skill-vocab-bg:   #FBF0E6;
+  --skill-punct-bg:   #E6EFF8;
+  --skill-overall-bg: #EEEAF8;
+
+  --border:             #DDE3EC;
+  --input:              transparent;
+  --input-background:   #FFFFFF;
+  --switch-background:  #CBD5E1;
+  --ring:               #1B2E4E;
+
+  --chart-1: #1B2E4E;
+  --chart-2: #1D7D58;
+  --chart-3: #B85C0D;
+  --chart-4: #1B4D8E;
+  --chart-5: #3D2F8C;
+
+  --radius: 1rem;
+
+  --sidebar:              #FFFFFF;
+  --sidebar-foreground:   #0F1C2E;
+  --sidebar-primary:      #1B2E4E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent:       #EEF2F7;
+  --sidebar-accent-foreground:  #1B2E4E;
+  --sidebar-border:       #DDE3EC;
+  --sidebar-ring:         #1B2E4E;
+}
+
+.dark {
+  --background:         #0A1628;
+  --foreground:         #E8EFF8;
+  --card:               #112040;
+  --card-foreground:    #E8EFF8;
+  --popover:            #1A2F50;
+  --popover-foreground: #E8EFF8;
+
+  --primary:            #5B8AC4;
+  --primary-foreground: #0A1628;
+  --secondary:          #34C58A;
+  --secondary-foreground: #0A1628;
+  --accent:             #8B7FD4;
+  --accent-foreground:  #0A1628;
+
+  --muted:              #1A2F50;
+  --muted-foreground:   #94A3B8;
+
+  --destructive:        #E74C3C;
+  --destructive-foreground: #0A1628;
+  --success:            #34C58A;
+  --success-foreground: #0A1628;
+  --warning:            #F5924E;
+  --warning-foreground: #0A1628;
+  --info:               #5B8AC4;
+  --info-foreground:    #0A1628;
+
+  --skill-grammar:    #34C58A;
+  --skill-vocab:      #F5924E;
+  --skill-punct:      #5B8AC4;
+  --skill-overall:    #8B7FD4;
+  --skill-grammar-bg: rgba(52,197,138,0.13);
+  --skill-vocab-bg:   rgba(245,146,78,0.13);
+  --skill-punct-bg:   rgba(91,138,196,0.13);
+  --skill-overall-bg: rgba(139,127,212,0.13);
+
+  --border:             #1E3A5F;
+  --input:              #112040;
+  --input-background:   #0A1628;
+  --switch-background:  #1E3A5F;
+  --ring:               #5B8AC4;
+
+  --chart-1: #5B8AC4;
+  --chart-2: #34C58A;
+  --chart-3: #F5924E;
+  --chart-4: #5B8AC4;
+  --chart-5: #8B7FD4;
+
+  --sidebar:              #112040;
+  --sidebar-foreground:   #E8EFF8;
+  --sidebar-primary:      #5B8AC4;
+  --sidebar-primary-foreground: #0A1628;
+  --sidebar-accent:       #1A2F50;
+  --sidebar-accent-foreground:  #E8EFF8;
+  --sidebar-border:       #1E3A5F;
+  --sidebar-ring:         #5B8AC4;
+}
+
+@theme inline {
+  --color-background:var(--background);--color-foreground:var(--foreground);
+  --color-card:var(--card);--color-card-foreground:var(--card-foreground);
+  --color-popover:var(--popover);--color-popover-foreground:var(--popover-foreground);
+  --color-primary:var(--primary);--color-primary-foreground:var(--primary-foreground);
+  --color-secondary:var(--secondary);--color-secondary-foreground:var(--secondary-foreground);
+  --color-muted:var(--muted);--color-muted-foreground:var(--muted-foreground);
+  --color-accent:var(--accent);--color-accent-foreground:var(--accent-foreground);
+  --color-destructive:var(--destructive);--color-destructive-foreground:var(--destructive-foreground);
+  --color-success:var(--success);--color-success-foreground:var(--success-foreground);
+  --color-warning:var(--warning);--color-warning-foreground:var(--warning-foreground);
+  --color-info:var(--info);--color-info-foreground:var(--info-foreground);
+  --color-border:var(--border);--color-input:var(--input);
+  --color-input-background:var(--input-background);--color-switch-background:var(--switch-background);
+  --color-ring:var(--ring);
+  --color-chart-1:var(--chart-1);--color-chart-2:var(--chart-2);--color-chart-3:var(--chart-3);
+  --color-chart-4:var(--chart-4);--color-chart-5:var(--chart-5);
+  --color-skill-grammar:var(--skill-grammar);--color-skill-vocab:var(--skill-vocab);
+  --color-skill-punct:var(--skill-punct);--color-skill-overall:var(--skill-overall);
+  --color-skill-grammar-bg:var(--skill-grammar-bg);--color-skill-vocab-bg:var(--skill-vocab-bg);
+  --color-skill-punct-bg:var(--skill-punct-bg);--color-skill-overall-bg:var(--skill-overall-bg);
+  --radius-sm:calc(var(--radius) - 6px);--radius-md:calc(var(--radius) - 3px);
+  --radius-lg:var(--radius);--radius-xl:calc(var(--radius) + 4px);--radius-2xl:calc(var(--radius) + 8px);
+  --color-sidebar:var(--sidebar);--color-sidebar-foreground:var(--sidebar-foreground);
+  --color-sidebar-primary:var(--sidebar-primary);--color-sidebar-primary-foreground:var(--sidebar-primary-foreground);
+  --color-sidebar-accent:var(--sidebar-accent);--color-sidebar-accent-foreground:var(--sidebar-accent-foreground);
+  --color-sidebar-border:var(--sidebar-border);--color-sidebar-ring:var(--sidebar-ring);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif; }
+  html { scroll-behavior:smooth; font-size:var(--font-size); }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+  ::-webkit-scrollbar-thumb:hover { background:var(--muted-foreground); }
+  .no-scrollbar::-webkit-scrollbar { display:none; }
+  .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+}
+
+@layer utilities {
+  .text-skill-grammar{color:var(--skill-grammar)}.text-skill-vocab{color:var(--skill-vocab)}
+  .text-skill-punct{color:var(--skill-punct)}.text-skill-overall{color:var(--skill-overall)}
+  .bg-skill-grammar{background-color:var(--skill-grammar)}.bg-skill-vocab{background-color:var(--skill-vocab)}
+  .bg-skill-punct{background-color:var(--skill-punct)}.bg-skill-overall{background-color:var(--skill-overall)}
+  .bg-skill-grammar-bg{background-color:var(--skill-grammar-bg)}.bg-skill-vocab-bg{background-color:var(--skill-vocab-bg)}
+  .bg-skill-punct-bg{background-color:var(--skill-punct-bg)}.bg-skill-overall-bg{background-color:var(--skill-overall-bg)}
+  .ios-card{background:var(--card);border-radius:1.25rem}
+}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideFromTop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes zoomIn95{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+.animate-fade-in{animation:fadeIn 0.3s ease-out}
+.animate-in{animation-fill-mode:both;animation-duration:200ms}
+.fade-in{animation-name:fadeIn}.slide-in-from-top-2{animation-name:slideFromTop}
+.zoom-in-95{animation-name:zoomIn95}.duration-200{animation-duration:200ms !important}

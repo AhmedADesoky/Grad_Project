@@ -1,0 +1,60 @@
+{
+  "name": "user_backend",
+  "version": "1.0.0",
+  "description": "English Writing Coach - AI-Powered Backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest-cli/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "testMatch": ["**/src/__tests__/**/*.test.js"],
+    "testPathIgnorePatterns": ["/node_modules/"],
+    "moduleNameMapper": {}
+  },
+  "keywords": [
+    "english",
+    "cefr",
+    "ai",
+    "graphql",
+    "zewail"
+  ],
+  "author": "Fares Wael Atef, Ahmed Abdelsamad, Abdelrhman Hisham, Ahmed Sameh",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "bullmq": "^5.78.0",
+    "cloudinary": "^2.10.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.5.2",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.11",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "stripe": "^22.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "@jest/globals": "^30.4.1",
+    "@types/cookie-parser": "^1.4.10",
+    "babel-jest": "^30.4.1",
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14"
+  }
+}

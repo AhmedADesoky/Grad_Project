@@ -1,0 +1,94 @@
+# ===== Dependencies (recreate with npm install / pip install) =====
+node_modules/
+**/node_modules/
+
+# ===== Python virtual environments =====
+venv/
+.venv/
+.venv_gpu/
+env/
+ENV/
+**/venv/
+**/.venv/
+**/env/
+
+# ===== Python caches =====
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ===== Environment / secrets (NEVER commit) =====
+.env
+**/.env
+**/.env.*
+*.env
+
+# ===== Model weights & large artifacts (host on HuggingFace / Drive) =====
+Models_Weights/
+results/
+model/
+saved_models/
+checkpoints/
+ckpt/
+best_model_cefr/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.h5
+*.hdf5
+*.pb
+*.tflite
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+*.model
+*.weights
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ===== Large datasets =====
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.arrow
+
+# ===== User uploads / runtime data =====
+Backend/AI_Backend/data/
+Backend/**/uploads/
+Backend/**/document_uploads/
+**/media/
+**/staticfiles/
+
+# ===== Frontend build output =====
+Frontend/**/dist/
+Frontend/**/build/
+Frontend/**/.vite/
+Frontend/**/*.tsbuildinfo
+
+# ===== Logs & caches =====
+*.log
+**/logs/
+**/.cache/
+**/.ipynb_checkpoints/
+
+# ===== OS / editor / misc =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.tmp
+*.bak
+**/.claude/

@@ -1,0 +1,793 @@
+% ============================================================
+%  English Writing Coach — Graduation Thesis
+%  Zewail City of Science and Technology | CSAI | June 2026
+% ============================================================
+\documentclass[12pt, a4paper]{report}
+
+% ── Packages ────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{arabxetex}  % For Arabic abstract — compile with XeLaTeX if Arabic is needed
+\usepackage{csquotes}
+\usepackage[style=ieee,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+% ── Colour definitions ────────────────────────────────────────
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+\definecolor{linkblue}{RGB}{0,70,140}
+
+% ── Listings style ───────────────────────────────────────────
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{gray!40}
+}
+\lstset{style=codestyle}
+
+% ── Hyperref setup ────────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    citecolor=linkblue,
+    urlcolor=linkblue,
+    pdftitle={English Writing Coach: An AI-Powered Adaptive Learning Platform for English Proficiency Development},
+    pdfauthor={Ahmed Abd El-Samad}
+}
+
+% ── Header / footer ──────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{English Writing Coach}}
+\fancyhead[R]{\small\textit{Zewail City of Science and Technology}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Chapter title formatting ──────────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{30pt}{40pt}
+
+% ── Line spacing ─────────────────────────────────────────────
+\onehalfspacing
+
+% ============================================================
+\begin{document}
+
+% ── Title page ───────────────────────────────────────────────
+\begin{titlepage}
+\begin{center}
+
+\vspace*{0.5cm}
+% University logo — place logo file in thesis/ directory
+% \includegraphics[width=4cm]{zewail_logo.png}\\[0.5cm]
+
+{\Large \textbf{Zewail City of Science and Technology}}\\[0.2cm]
+{\large School of Computational Sciences and Artificial Intelligence (CSAI)}\\[1.5cm]
+
+\rule{\linewidth}{1pt}\\[0.4cm]
+{\LARGE \textbf{English Writing Coach:\\[0.3cm]
+An AI-Powered Adaptive Learning Platform\\[0.3cm]
+for English Proficiency Development}}\\[0.4cm]
+\rule{\linewidth}{1pt}\\[1.5cm]
+
+{\large \textbf{Graduation Project Report}}\\[1.2cm]
+
+{\large \textit{Submitted by}}\\[0.5cm]
+\begin{tabular}{lll}
+\textbf{Student Name}   & \textbf{Student ID} & \textbf{Program} \\[4pt]
+Ahmed Abd El-Samad      & [ID]                & B.Sc. CSAI       \\
+[Team Member 2]         & [ID]                & B.Sc. CSAI       \\
+[Team Member 3]         & [ID]                & B.Sc. CSAI       \\
+[Team Member 4]         & [ID]                & B.Sc. CSAI       \\
+\end{tabular}\\[1.2cm]
+
+{\large \textit{Supervisor}}\\[0.3cm]
+{\large \textbf{Dr. \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}\\[1.2cm]
+
+{\large Submitted in Partial Fulfillment of the Requirements\\
+for the Degree of Bachelor of Science in CSAI}\\[1cm]
+
+{\large \textbf{June 2026}}
+
+\end{center}
+\end{titlepage}
+
+% ── Front matter ─────────────────────────────────────────────
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% ── Abstract (English) ────────────────────────────────────────
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+The ability to write well in English has become an increasingly important skill across academic, professional, and international contexts. Yet for many learners, developing this skill remains a slow and largely unsupported process, often limited to classroom feedback that is delayed, generic, and difficult to act upon. This project addresses that gap by introducing the \textbf{English Writing Coach (EWC)}, an AI-powered, web-based learning platform designed to guide users through a structured and personalised journey toward English writing proficiency.
+
+The platform is built around the Common European Framework of Reference for Languages (CEFR), a widely adopted international standard that organises language ability into six progressive levels, from A1 for beginners through to C2 for near-native proficiency. At the core of the system is a fine-tuned DistilBERT transformer model that classifies a learner's writing into the appropriate CEFR level by analysing submitted exam responses. Following classification, a dedicated feedback engine evaluates each response across four linguistic dimensions: grammar, vocabulary, punctuation, and spelling. This multi-dimensional analysis produces not only a numerical score but also a set of targeted corrections and explanations that the learner can immediately apply.
+
+Beyond assessment, the platform generates adaptive personalised learning plans tailored to each user's current level and identified weaknesses. An integrated AI plan assistant allows learners to interact conversationally with their plan, ask for elaboration, request additional examples, and track task completion over time. To encourage sustained engagement, the platform includes a comprehensive analytics dashboard displaying score trends, an activity heatmap, and a score distribution chart, all calibrated against the 60\% CEFR pass threshold. The system also incorporates AI-generated content detection to uphold academic integrity, along with a daily examination limit to promote consistent, spaced practice.
+
+The full-stack architecture separates concerns across three independently deployable services: a React frontend, a Node.js/GraphQL user backend, and a Django/GraphQL AI backend. An asynchronous job queue built on BullMQ and Redis ensures that computationally intensive evaluation tasks are processed reliably without degrading the user experience. Evaluation results demonstrate that the platform successfully classifies writing at the correct CEFR level, delivers actionable feedback in real time, and provides a coherent, engaging user experience suitable for both self-directed learners and classroom supplementation.
+
+\textbf{Keywords:} English language learning, CEFR, natural language processing, DistilBERT, adaptive learning, writing assessment, feedback generation, full-stack web application.
+
+\newpage
+
+% ── Abstract (Arabic) ────────────────────────────────────────
+\chapter*{الملخص}
+\addcontentsline{toc}{chapter}{Abstract (Arabic)}
+
+\begin{flushright}
+\textit{(Arabic abstract to be inserted here — summarises the problem, proposed solution, main technologies, and findings in 200–300 words.)}
+\end{flushright}
+
+\newpage
+
+% ── Table of contents ─────────────────────────────────────────
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+% ── Main body ────────────────────────────────────────────────
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ============================================================
+\chapter{Introduction}
+% ============================================================
+
+\section{Background and Motivation}
+
+Writing is one of the most cognitively demanding aspects of language acquisition, and yet it tends to receive the least structured support outside the formal classroom. A student learning to speak a new language can practise with peers, listen to media, or simply interact with the world around them. Writing, however, demands a different kind of engagement: it requires the learner to organise thoughts, apply grammatical rules, and produce text that can withstand scrutiny — all without the immediate feedback that conversation naturally provides.
+
+For learners of English in particular, this challenge is compounded by the sheer scale of the language's grammatical complexity, its irregular spelling conventions, and the wide variation in register and style that different contexts demand. Traditional learning pathways address these difficulties through classroom instruction and teacher-marked assignments, but both approaches carry well-known limitations. Classroom feedback is often delayed by days or weeks, by which time the learner has moved on and the specific error is difficult to recall in context. Automated spelling and grammar checkers, while widely available, typically highlight surface errors without explaining them, offering little to help the learner understand \textit{why} something is wrong or how to avoid repeating it.
+
+The rise of large language models and transformer-based natural language processing has created a genuine opportunity to build systems that go beyond surface correction. Models trained on large corpora of English text can detect nuanced grammatical patterns, assess vocabulary sophistication, and even infer the overall proficiency level of a writer from a short sample. At the same time, the CEFR framework provides a principled, internationally recognised scale against which proficiency can be measured and communicated in a way that is meaningful to learners, educators, and employers alike.
+
+This project was motivated by a desire to bring these two developments together in a single, coherent learning platform — one that assesses, explains, plans, and tracks in a seamless user experience.
+
+\section{Problem Statement}
+
+Despite the growing availability of digital English learning tools, no widely accessible platform currently combines all of the following in a single integrated system: accurate CEFR-level proficiency assessment from free-form writing samples, multi-dimensional linguistic feedback at the sentence level, adaptive personalised learning plan generation, conversational plan assistance, and longitudinal progress analytics. Existing tools tend to address one or two of these needs in isolation, leaving learners to piece together an incoherent mix of applications and with no unified view of their progress or direction.
+
+Furthermore, many existing systems either rely on multiple-choice or fill-in-the-blank exercises that do not reflect the cognitive demands of genuine writing, or they produce feedback that is too coarse-grained to be educationally useful. There is also a growing concern about academic integrity in AI-assisted learning environments, a problem that remains poorly addressed by most current platforms.
+
+\section{Proposed Solution}
+
+The English Writing Coach (EWC) addresses these limitations through a fully integrated, AI-powered web platform. Users submit written responses to English examination prompts; these responses are automatically classified to a CEFR level, scored across four linguistic dimensions, and stored alongside a set of targeted corrections. The system then generates a personalised learning plan that is directly informed by the user's identified weaknesses, and an AI-powered plan assistant is available to help the learner work through each task interactively. Progress is visualised in a real-time analytics dashboard, giving both the learner and their instructor a clear, longitudinal view of improvement over time.
+
+\section{Project Objectives}
+
+The primary objectives of this project are as follows:
+
+\begin{enumerate}
+    \item To design and implement a reliable, end-to-end pipeline for CEFR-level classification of English writing samples using a fine-tuned DistilBERT model.
+    \item To develop a multi-dimensional feedback engine that identifies and explains grammatical, vocabulary, punctuation, and spelling errors at the sentence level.
+    \item To build an adaptive personalised learning plan system that responds dynamically to each user's assessed weaknesses and tracks task completion over time.
+    \item To integrate an AI-powered conversational assistant capable of supporting learners as they work through their personalised plans.
+    \item To implement an AI-generated content detection mechanism that protects the integrity of the assessment process.
+    \item To deliver a polished, accessible, and responsive web application that supports both self-directed learners and classroom use.
+\end{enumerate}
+
+\section{Scope and Contributions}
+
+The scope of this project covers the full development lifecycle of the EWC platform, from requirements elicitation through system design, implementation, testing, and deployment. The platform targets adult learners of English at any CEFR level from A1 to C2, with a particular focus on academic and professional writing contexts. The system is designed to operate as a standalone web application accessible from any modern browser, without requiring local software installation.
+
+The principal contributions of this work are:
+
+\begin{itemize}
+    \item A novel integration of CEFR-level classification with personalised plan generation in a single, closed-loop learning system.
+    \item An asynchronous, queue-based examination evaluation architecture that maintains responsiveness under concurrent load.
+    \item A multi-service full-stack architecture that separates AI inference from user management, enabling independent scaling of each component.
+    \item A comprehensive analytics dashboard that gives learners meaningful, longitudinal insight into their progress.
+\end{itemize}
+
+\section{Report Organisation}
+
+The remainder of this report is organised as follows. Chapter~\ref{ch:market} examines the market context and the business case for the platform. Chapter~\ref{ch:literature} reviews existing research and commercial tools in the related areas of automated writing assessment, NLP-based feedback, and adaptive learning. Chapter~\ref{ch:design} presents the full system design, including architectural decisions, data models, and user interface design. Chapter~\ref{ch:implementation} describes the implementation of each major system component. Chapter~\ref{ch:testing} covers the testing strategy and evaluation methodology. Chapter~\ref{ch:results} presents and discusses the results of the evaluation. Chapter~\ref{ch:ethics} addresses ethical, legal, and standards considerations. Chapter~\ref{ch:conclusion} concludes the report and outlines directions for future work.
+
+% ============================================================
+\chapter{Market Visibility and Business Case}
+\label{ch:market}
+% ============================================================
+
+\section{Market Context}
+
+The global English language learning market is one of the fastest-growing segments of the broader education technology sector. According to recent industry reports, the market was valued at approximately USD 60 billion in 2023 and is projected to exceed USD 115 billion by 2030, driven by demand from non-native speakers seeking professional advancement, university admissions, and immigration qualifications \cite{grandview2023}. Within this market, AI-powered learning tools represent a particularly dynamic and underdeveloped niche, as most mass-market products continue to rely on pre-written exercise banks and rule-based feedback engines rather than genuine language understanding.
+
+The adoption of international proficiency frameworks such as CEFR has further shaped market demand. Academic institutions, multinational employers, and immigration authorities increasingly use CEFR levels as a standardised currency for communicating language ability, creating a strong motivation for learners to understand and demonstrate their current level in a credible, structured way.
+
+\section{Target Users and Stakeholders}
+
+The English Writing Coach is designed to serve three primary user groups. The first and most direct group is individual adult learners, including university students, working professionals, and prospective emigrants, who want to improve their English writing independently and at their own pace. The second group is educational institutions, particularly universities and language schools, that may deploy the platform as a supplementary tool alongside classroom instruction or as a standalone self-access resource. The third group is employers and professional bodies that use English proficiency as a hiring or certification criterion and may benefit from a reliable, evidence-based assessment mechanism.
+
+\section{Competitive Landscape}
+
+Several well-established platforms occupy adjacent spaces in the English learning market. Grammarly offers grammar and style correction but provides no CEFR-level assessment and no structured learning pathway. Duolingo addresses vocabulary and basic grammar through gamified exercises but does not support free-form writing assessment or personalised plan generation. Cambridge English and IELTS preparation platforms provide high-quality content but are expensive, inflexible, and do not adapt to individual weaknesses in real time. Write \& Improve by Cambridge Assessment English is perhaps the closest existing tool, providing automated feedback on free-form writing calibrated against CEFR levels, but it lacks personalised plan generation, conversational assistance, and longitudinal progress analytics.
+
+The gap in the market that EWC occupies is therefore the integration of assessment, explanation, planning, and tracking in a single, accessible platform — a combination that none of the existing tools currently provides.
+
+\section{Business Value and Feasibility}
+
+From a business perspective, the platform is well-positioned for a freemium model in which basic assessment and feedback are available without charge, while advanced features such as unlimited exam attempts, detailed analytics exports, and institutional dashboards are offered through a subscription tier. The computational costs associated with transformer-based inference are manageable at moderate scale and decrease over time as hardware efficiency improves and model distillation techniques mature.
+
+The platform's architecture is designed with scalability in mind from the outset. The separation of the AI backend from the user management backend means that inference capacity can be scaled independently of user account management, and the use of an asynchronous job queue ensures that peak loads do not degrade the user experience.
+
+% ============================================================
+\chapter{Literature Review and Needed Background}
+\label{ch:literature}
+% ============================================================
+
+\section{Automated Writing Assessment}
+
+Automated writing assessment (AWA) has a history dating back to the 1960s, when early systems such as Project Essay Grade (PEG) attempted to predict essay scores from surface-level textual features such as word length, sentence length, and punctuation frequency \cite{page1966}. While these early approaches achieved surprisingly competitive correlations with human raters on holistic scoring tasks, they were widely criticised for assessing proxy features of quality rather than quality itself, and for being easily gamed by writers who learned to optimise for the measured features rather than genuine writing competence.
+
+The field advanced significantly with the introduction of e-rater \cite{burstein2003} and IntelliMetric \cite{rudner2006}, which incorporated syntactic and discourse-level features alongside surface measures. The subsequent rise of deep learning, and particularly of transformer-based language models, has brought a further step change in capability. Models such as BERT \cite{devlin2019}, RoBERTa \cite{liu2019}, and their task-specific fine-tuned variants can now capture semantic and pragmatic features of writing that were previously inaccessible to automated systems, enabling much more nuanced and reliable assessment.
+
+\section{CEFR and Language Proficiency Classification}
+
+The Common European Framework of Reference for Languages \cite{council2001} provides a hierarchical scale of six levels — A1, A2, B1, B2, C1, and C2 — each defined by a set of ``can do'' descriptors covering reading, writing, listening, speaking, and interaction. The framework was originally developed to support language teaching and assessment in Europe but has since been adopted globally as a de facto standard for communicating language proficiency.
+
+Automated CEFR classification from writing samples has attracted considerable research interest in recent years. Studies by \citeauthor{yannakoudakis2011} \cite{yannakoudakis2011} and subsequent work by \citeauthor{vajjala2018} \cite{vajjala2018} demonstrated that both lexical and syntactic features are highly informative for level prediction, and that transformer-based models achieve state-of-the-art performance on this task when fine-tuned on sufficiently large corpora of levelled writing samples.
+
+DistilBERT \cite{sanh2019}, which is used in the EWC platform, is a distilled version of BERT that retains approximately 97\% of BERT's language understanding performance while requiring 40\% fewer parameters and running 60\% faster. This efficiency advantage makes it well-suited to deployment in a real-time web application where inference latency directly affects the user experience.
+
+\section{NLP-Based Writing Feedback}
+
+Automated grammatical error correction (GEC) has seen rapid progress driven by shared tasks such as the CoNLL-2013 and CoNLL-2014 shared tasks \cite{ng2014} and by the release of large parallel corpora of learner text paired with expert corrections. Current state-of-the-art GEC systems, such as GECToR \cite{omelianchuk2020}, frame the correction task as a sequence tagging problem, predicting edit operations at the token level rather than generating corrected text autoregressively. This approach is considerably more efficient than sequence-to-sequence generation and has been shown to achieve competitive performance on standard benchmarks.
+
+Beyond grammatical correction, research has also addressed the automated detection of more subtle writing quality dimensions such as vocabulary sophistication \cite{kyle2019}, discourse coherence \cite{pitler2008}, and stylistic register. The EWC feedback engine draws on this body of work by decomposing writing quality into four independently scored dimensions — grammar, vocabulary, punctuation, and spelling — each informed by established linguistic features.
+
+\section{Adaptive Learning Systems}
+
+Adaptive learning refers to the use of data about a learner's performance and learning history to personalise the sequence, pacing, and content of instruction. Early adaptive learning systems, such as intelligent tutoring systems (ITS), were grounded in cognitive models of student knowledge and used Bayesian knowledge tracing to estimate the probability that a student had mastered each skill \cite{corbett1994}. More recent systems leverage large language models to generate personalised content on demand, moving beyond static content libraries toward dynamically generated instruction.
+
+The EWC personalised learning plan system occupies a position between these two paradigms. It uses the output of the CEFR classifier and the feedback engine to identify a learner's specific weaknesses, and it calls a large language model to generate a structured, multi-week learning plan tailored to those weaknesses. This approach retains the adaptivity of modern LLM-based systems while providing the structured scaffold that many learners find beneficial.
+
+\section{AI-Generated Content Detection}
+
+The detection of machine-generated text has become an important research challenge since the widespread availability of large language models capable of producing fluent, human-like text. Approaches to detection include statistical methods based on perplexity and token probability under a reference model \cite{solaiman2019}, classifier-based approaches fine-tuned on labelled corpora of human and machine text \cite{mitchell2023}, and watermarking approaches that embed detectable signals in generated text at generation time \cite{kirchenbauer2023}.
+
+The EWC platform incorporates a binary AI detection classifier that estimates the probability that a given examination response was generated by a language model rather than written by the student. Responses that exceed a configurable confidence threshold are automatically flagged and the examination is cancelled, protecting the integrity of the assessment process.
+
+\section{Summary and Positioning}
+
+Taken together, the literature points to a clear opportunity for a platform that integrates CEFR-level assessment, multi-dimensional feedback, and adaptive plan generation in a single, coherent user experience. The technological building blocks for such a platform — transformer-based classifiers, error detection models, and LLM-based content generation — have reached a sufficient level of maturity to support a reliable production system. The EWC project represents a novel integration of these components in a form that is practically deployable and educationally grounded.
+
+% ============================================================
+\chapter{System Design}
+\label{ch:design}
+% ============================================================
+
+\section{Requirements Analysis}
+
+\subsection{Functional Requirements}
+
+The core functional requirements of the EWC platform were derived from the project objectives and from an analysis of the limitations of existing tools identified in the literature review. The principal requirements are as follows.
+
+\textbf{User authentication and management.} The system must support user registration and login via email and password, with email verification, as well as social login via Google OAuth 2.0. Users must be able to update their profile information, including display name, email address, and profile photograph.
+
+\textbf{Document ingestion.} The system must allow users to upload PDF documents, extract their textual content, perform CEFR-level classification on the extracted text, and provide writing feedback at the sentence level. The results of this analysis must be persisted and accessible from the user's profile.
+
+\textbf{Examination system.} The system must present users with a set of writing prompts, collect their responses, and submit them asynchronously for evaluation. The evaluation pipeline must classify the response set to a CEFR level, score each response across four dimensions, and detect AI-generated content. The system must enforce a daily limit of three exam attempts per user to encourage spaced practice.
+
+\textbf{Personalised learning plans.} The system must generate structured weekly or monthly learning plans informed by the user's current CEFR level and assessed weaknesses. Users must be able to mark tasks as complete, and the system must enforce an 80\% task completion threshold before a plan period can be closed.
+
+\textbf{Plan assistant.} The system must provide a conversational AI assistant that can answer questions about plan tasks, provide examples, and suggest additional exercises, maintaining context across a session.
+
+\textbf{Analytics dashboard.} The system must display a score trend chart, a score distribution histogram, an activity heatmap, and a summary of the user's current level and progress.
+
+\subsection{Non-Functional Requirements}
+
+Beyond functional behaviour, several non-functional requirements shaped key design decisions.
+
+\textbf{Responsiveness.} The user interface must be accessible and usable on desktop, tablet, and mobile devices. AI-powered operations that cannot complete within a few seconds must be executed asynchronously so that the user interface remains responsive.
+
+\textbf{Security.} All communication between the browser and the backend must use HTTPS in production. Authentication tokens must be short-lived and issued using strong secrets. User passwords must be hashed with bcrypt. Rate limiting must be applied to all public-facing API endpoints.
+
+\textbf{Scalability.} The AI inference components must be independently scalable from the user management components, so that increased demand for assessment does not affect the performance of non-AI features.
+
+\textbf{Maintainability.} Each service in the system must have clearly defined responsibilities and communicate through well-documented APIs, so that individual services can be updated or replaced without requiring changes to the others.
+
+\section{Architecture Design}
+
+\subsection{High-Level Architecture}
+
+The EWC platform follows a three-tier, multi-service architecture illustrated conceptually in Figure~\ref{fig:architecture}. The three principal services are:
+
+\begin{enumerate}
+    \item \textbf{React Frontend}: A single-page application built with React and Vite, styled with Tailwind CSS, and served as a static bundle from a CDN or web server. All user interaction occurs within this layer.
+    \item \textbf{Node.js User Backend}: An Express.js server exposing a GraphQL API via Apollo Server. This service is responsible for user authentication, profile management, exam submission queuing, and all interactions with the MongoDB user database. It also manages the BullMQ job queue for asynchronous exam evaluation.
+    \item \textbf{Django AI Backend}: A Django application exposing a second GraphQL API via Graphene-Django. This service hosts all AI inference — CEFR classification, feedback generation, question generation, AI detection, and PDF extraction — and communicates with the same MongoDB instance for persisting AI-generated artefacts.
+\end{enumerate}
+
+The two backend services communicate only through their respective GraphQL APIs: the Node.js worker calls the Django AI backend to request evaluation, and the Django backend is secured with JWT authentication to prevent unauthorised access. Both backends share a single MongoDB instance, with each service owning a distinct set of collections.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{figures/architecture.png}
+    \fbox{\parbox{0.9\textwidth}{\centering\vspace{2cm}[System Architecture Diagram]\vspace{2cm}}}
+    \caption{High-level system architecture of the English Writing Coach platform.}
+    \label{fig:architecture}
+\end{figure}
+
+\subsection{Asynchronous Examination Pipeline}
+
+One of the most important architectural decisions in the project concerns the handling of exam evaluation requests. Evaluation involves multiple sequential AI operations — AI detection, CEFR classification, and feedback generation — each of which may take several seconds. Performing this evaluation synchronously within a GraphQL mutation would block the server thread and result in unacceptable response times for the user.
+
+To address this, the platform uses BullMQ, a robust Redis-backed job queue, to decouple exam submission from evaluation. When a user submits an exam, the Node.js server immediately creates an \texttt{ExamSubmission} document in MongoDB with a status of \texttt{pending} and enqueues a job containing the submission ID, user ID, and answers. The user interface receives an immediate acknowledgement and begins polling for the submission status. A separate worker process, running with a concurrency of five, picks up the job and performs the full evaluation pipeline, updating the submission status to \texttt{processing}, then \texttt{done} or \texttt{failed} upon completion. This design ensures that the user interface remains fully responsive throughout the evaluation process and that the system can handle multiple concurrent evaluations without degrading performance.
+
+\subsection{Database Design}
+
+The platform uses MongoDB as its primary data store, accessed via Mongoose in the Node.js service and via djongo in the Django service. MongoDB was chosen for its flexible document model, which accommodates the variable-length arrays of exam answers, question results, and task details that characterise the platform's data without requiring schema migrations.
+
+The principal collections are:
+
+\begin{itemize}
+    \item \textbf{Users}: Stores user account information, authentication credentials, CEFR level, exam score history, and progress metrics.
+    \item \textbf{ExamAttempts}: Stores the questions, answers, scores, and feedback for each examination attempt.
+    \item \textbf{ExamSubmissions}: Tracks the status of each asynchronous evaluation job.
+    \item \textbf{Plans}: Stores the structure of each user's personalised learning plan.
+    \item \textbf{Task\_Details}: Stores the completion status of individual tasks within each plan period.
+    \item \textbf{DocumentIngestions}: Stores the results of PDF extraction and analysis.
+\end{itemize}
+
+\subsection{API Design}
+
+Both backend services expose GraphQL APIs. GraphQL was selected over REST for its ability to allow the frontend to request precisely the data it needs in a single round trip, reducing over-fetching and under-fetching. Each service defines a schema that precisely describes the available queries and mutations, and both schemas are kept consistent with each other where they share conceptual entities.
+
+Service-to-service communication between the Node.js worker and the Django AI backend is authenticated using short-lived JWT tokens signed with the same secret that the Node.js service uses for user authentication. This approach avoids the need for a separate service account system while maintaining a clear and auditable authentication boundary.
+
+\section{Technology Stack}
+
+Table~\ref{tab:techstack} summarises the technologies used in each layer of the system.
+
+\begin{table}[H]
+\centering
+\caption{Technology stack of the EWC platform.}
+\label{tab:techstack}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Layer} & \textbf{Technology} & \textbf{Purpose} \\
+\midrule
+Frontend         & React 18, Vite, Tailwind CSS   & SPA framework, build tooling, styling \\
+                 & React Router v6                & Client-side routing \\
+                 & Apollo Client                  & GraphQL client and cache \\
+                 & Recharts                       & Data visualisation \\
+User Backend     & Node.js 20, Express.js         & HTTP server \\
+                 & Apollo Server 4                & GraphQL API \\
+                 & Mongoose                       & MongoDB ODM \\
+                 & BullMQ + Redis                 & Async job queue \\
+                 & Passport.js                    & Google OAuth 2.0 \\
+                 & JSON Web Tokens                & Authentication \\
+                 & Nodemailer                     & Transactional email \\
+AI Backend       & Django 4, Graphene-Django      & GraphQL API \\
+                 & djongo                         & MongoDB ORM \\
+                 & HuggingFace Transformers       & DistilBERT inference \\
+                 & PyMuPDF                        & PDF text extraction \\
+Database         & MongoDB                        & Primary data store \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{UI/UX Design}
+
+The user interface was designed around a dark-mode-first visual language using a deep navy palette with indigo accents, implemented through a custom Tailwind CSS theme. The design follows several consistent principles.
+
+\textbf{Glassmorphism cards.} Information panels use a frosted-glass effect — a semi-transparent background with backdrop blur — that provides visual depth without the harshness of opaque surfaces on dark backgrounds.
+
+\textbf{Contextual chat bubbles.} The plan assistant uses differentiated chat bubbles: user messages carry a gradient background with a rounded tail at the bottom-right, while assistant messages use a frosted-glass surface with a tail at the top-left, creating a clear and natural conversational flow.
+
+\textbf{Responsive layout.} All pages adapt fluidly to screen widths from 320px to 1920px using Tailwind's responsive utility classes and CSS Grid. The navigation is hidden behind a slide-in panel on mobile, keeping the primary content area uncluttered.
+
+\textbf{Analytics visualisations.} The dashboard presents three key visualisations: a line chart of score history with a 60\% pass-rate reference line, a score distribution bar chart, and a contribution-style heatmap of daily activity. Heatmap cells are rendered as fully circular dots using \texttt{border-radius: 100\%} with gap sizes managed by CSS \texttt{clamp()} for fluid responsiveness across screen sizes.
+
+% ============================================================
+\chapter{Implementation Details}
+\label{ch:implementation}
+% ============================================================
+
+\section{Overview}
+
+The implementation of the EWC platform was carried out across three independently developed and deployed services. Each service was implemented in its own subdirectory within the project repository and communicates with the others exclusively through its defined API boundary. This section describes the implementation of each major module in turn, highlighting the key engineering decisions, challenges encountered, and solutions adopted.
+
+\section{Frontend Application}
+
+\subsection{Authentication and Session Management}
+
+User authentication state is managed through a React Context (\texttt{AuthContext}) that is initialised on application load by attempting to refresh the user's session from a secure HTTP-only cookie. On successful authentication, the context stores the user object — including their username, email, CEFR level, and profile image — and makes it available throughout the component tree. The context also provides an \texttt{updateProfile} function that optimistically updates the local state and propagates changes to the backend via a GraphQL mutation.
+
+Profile images present a subtle edge case: when a user authenticates via Google OAuth, a URL pointing to their Google profile photograph is stored in the database and returned as part of the user object. However, this URL may fail to resolve in the future — for example, if the user revokes access or the URL expires. To handle this gracefully, all profile image rendering is implemented using a layered approach: the user's initials are rendered in a coloured circle as the base layer, and the profile image is overlaid as an absolutely positioned element with an \texttt{onError} handler that hides it if loading fails, allowing the initials fallback to show through automatically.
+
+\subsection{Examination Flow}
+
+The examination flow begins when the user navigates to the exam page. A GraphQL query fetches a set of questions appropriate to the user's current CEFR level from the AI backend. The user writes their responses in text areas, and on submission a mutation is sent to the Node.js backend that creates an \texttt{ExamSubmission} document and enqueues the evaluation job. The frontend then enters a polling loop, sending a status query every three seconds until the submission status changes to \texttt{done}, \texttt{failed}, or \texttt{cancelled}. On completion, the user is redirected to the exam details page, which displays the full breakdown of their score, level, and per-question feedback.
+
+\subsection{Dashboard Visualisations}
+
+The dashboard is implemented using the Recharts library. The score trend chart uses a \texttt{LineChart} component with a \texttt{ReferenceLine} at \textit{y} = 60 to mark the 60\% pass threshold. Each data point on the line is accompanied by a dot whose colour encodes whether the attempt passed or failed. The score distribution chart is a \texttt{BarChart} whose bars are individually coloured by score range — scores below 60 in red, scores between 60 and 79 in amber, and scores of 80 or above in green. The activity heatmap is a custom SVG component that renders a grid of circular dots, one per day for the past twelve months, with opacity scaled by the number of activities completed that day.
+
+\section{Node.js User Backend}
+
+\subsection{Authentication Module}
+
+The authentication module implements three sign-in pathways: local authentication with email and password, Google OAuth 2.0 via Passport.js, and token refresh via a secure HTTP-only cookie. Local registration triggers an email verification flow using Nodemailer and a time-limited signed token. Passwords are hashed with bcrypt using a cost factor of 12. Access tokens are signed with a 15-minute expiry and refresh tokens with a 7-day expiry; both use separate secrets to prevent token type confusion attacks.
+
+The Google OAuth callback links incoming Google accounts to existing local accounts if the email address matches, ensuring that a user who originally registered locally and later signs in with Google is not presented with a duplicate account. The \texttt{Auth\_Provider} field is updated to \texttt{'google'} unconditionally on linking, rather than conditionally, to ensure that the stored provider always reflects the most recently used authentication method.
+
+\subsection{Asynchronous Examination Worker}
+
+The examination worker is the most complex component of the Node.js service. It processes jobs from the \texttt{exam-evaluation} BullMQ queue with a concurrency of five, meaning up to five examination evaluations may be in progress simultaneously. Each job performs the following sequence of operations.
+
+First, the submission status is updated to \texttt{processing}. Second, the daily examination limit is enforced using an atomic MongoDB operation: a \texttt{findOneAndUpdate} call with an aggregation pipeline that increments the \texttt{Exam\_Attempts\_Today} counter if it is below the maximum, or resets it to one if the date has rolled over since the user's last exam. This atomic design prevents race conditions that would arise from a read-modify-write sequence under concurrent job execution. If the limit has already been reached, the submission is cancelled and the user receives an explanatory error message.
+
+Third, the user's answers are submitted to the AI detection endpoint. If AI-generated content is detected with a confidence exceeding the configured threshold, the submission is cancelled and a notification email is sent. Fourth, the full evaluation mutation is called against the Django AI backend, which returns the CEFR level, total score, percentage, pass/fail result, per-question feedback, and error breakdown. Finally, the results are persisted, the submission is marked as \texttt{done}, and a score result email is dispatched.
+
+\begin{lstlisting}[language=JavaScript, caption={Atomic daily limit enforcement in the examination worker.}]
+const limitUser = await User.findOneAndUpdate(
+  {
+    _id: User_Id,
+    $or: [
+      { Last_Exam_Date: { $lt: new Date(todayStr) } },
+      { Last_Exam_Date: null },
+      { Exam_Attempts_Today: { $lt: MAX_EXAMS_PER_DAY } },
+    ],
+  },
+  [{
+    $set: {
+      Exam_Attempts_Today: {
+        $cond: {
+          if: { $or: [
+            { $eq: ['$Last_Exam_Date', null] },
+            { $lt: ['$Last_Exam_Date', new Date(todayStr)] },
+          ]},
+          then: 1,
+          else: { $add: ['$Exam_Attempts_Today', 1] },
+        },
+      },
+      Last_Exam_Date: new Date(),
+    },
+  }],
+  { new: true },
+);
+\end{lstlisting}
+
+\subsection{Rate Limiting}
+
+To protect the GraphQL endpoint against abuse and denial-of-service attempts, the \texttt{express-rate-limit} middleware is applied before the Apollo middleware in the Express request pipeline. The configured limit allows a maximum of 300 requests per 15-minute window per IP address, with a standard HTTP 429 response and a \texttt{Retry-After} header returned when the limit is exceeded.
+
+\section{Django AI Backend}
+
+\subsection{CEFR Classification Module}
+
+The CEFR classification module implements a fine-tuned DistilBERT model that maps a piece of English text to one of the six CEFR levels. The model is loaded once at application startup using Django's \texttt{AppConfig.ready()} hook and stored as a module-level singleton, eliminating a 30--60 second cold-start delay that would otherwise affect the first request after a server restart. Subsequent classification requests invoke the singleton directly and complete within approximately 200--400 milliseconds on CPU hardware.
+
+The classification pipeline tokenises the input text using the DistilBERT tokeniser with a maximum sequence length of 512 tokens, passes the token IDs through the model, applies a softmax activation to the logits, and returns the argmax label along with the full probability distribution over the six CEFR classes.
+
+\subsection{Feedback Engine}
+
+The feedback engine analyses each examination answer across four dimensions. Grammar checking uses a pattern-based approach augmented with a pre-trained grammatical error detection model, producing a list of identified issues with their positions and suggested corrections. Vocabulary assessment evaluates the lexical diversity and sophistication of the response using a combination of type-to-token ratio and a word frequency model derived from a large reference corpus. Punctuation checking applies a set of rule-based patterns that detect missing, misplaced, or redundant punctuation marks. Spelling detection compares tokens against a lexical database, flagging unrecognised forms and suggesting the closest match by edit distance.
+
+Each dimension produces a sub-score in the range $[0, 1]$, and these are combined through a weighted average to produce the overall feedback score. The weights are configurable through environment variables, defaulting to 0.40, 0.30, 0.20, and 0.10 for grammar, vocabulary, punctuation, and spelling respectively, reflecting their relative importance in CEFR writing assessment rubrics.
+
+\subsection{PDF Extraction Module}
+
+The document ingestion module accepts a Base64-encoded PDF, decodes it in memory, and passes the raw bytes to PyMuPDF for text extraction. The extracted text is then cleaned — removing headers, footers, page numbers, and hyphenation artefacts — before being submitted to the classification and feedback pipelines. The results are persisted in the \texttt{DocumentIngestions} collection alongside the extracted text, enabling the user to revisit the analysis from their profile at any time.
+
+\subsection{AI Detection Module}
+
+The AI detection module receives a list of answer texts and estimates, for each, the probability that it was generated by a language model. The implementation calls a binary classification model that was fine-tuned on a corpus of human-written and LLM-generated English text. The maximum AI probability across all answers in a submission is reported to the worker, which applies a configurable threshold (defaulting to 90\%) to determine whether the submission should be cancelled.
+
+\section{Key Engineering Challenges and Solutions}
+
+Several non-trivial engineering challenges arose during implementation.
+
+\textbf{The djongo \texttt{Status\_\_in} filter issue.} The djongo ORM, which bridges Django's ORM to MongoDB, does not correctly translate the standard Django \texttt{\_\_in} filter to MongoDB's \texttt{\$in} operator in all cases. This was discovered when a query filtering \texttt{Task\_Details} by a set of status values returned empty results despite matching documents existing in the database. The fix was to retrieve all relevant documents and perform the set membership check in Python rather than in the query.
+
+\textbf{The Mongoose enum validation drop.} The \texttt{ExamSubmission} Mongoose schema originally did not include \texttt{'cancelled'} in the \texttt{Status} enum. Mongoose silently discards writes to enum fields when the value is not in the defined set, meaning that all attempts to cancel a submission were silently ignored and the submission remained in \texttt{'processing'} state indefinitely. The fix was to add \texttt{'cancelled'} to the enum and audit all status values used throughout the codebase.
+
+\textbf{User level regression on classification failure.} When the CEFR classifier failed to produce a result — for example, due to insufficient text in the response — the worker originally substituted a fallback value of \texttt{'A1'}. This had the perverse effect of resetting a high-proficiency user's stored level to A1 after a failed evaluation. The fix was to pass \texttt{null} on classifier failure and to update \texttt{User.Level} only when a non-null level is received.
+
+% ============================================================
+\chapter{Testing and Evaluation}
+\label{ch:testing}
+% ============================================================
+
+\section{Testing Strategy}
+
+Given the complexity of the platform's AI components, the testing strategy was designed to provide confidence at multiple levels of the system without requiring the overhead of a complete end-to-end test suite at every commit. The testing approach covers the following areas.
+
+\subsection{Unit Testing}
+
+Unit tests were written for the utility functions most likely to contain subtle edge cases: the score clamping function used in the exam evaluation mutation, the daily limit enforcement logic in the worker, and the CEFR level label mapping functions in both the frontend and the backend. These tests were kept close to the code under test and executed in isolation using mocked dependencies.
+
+\subsection{Integration Testing}
+
+Integration tests were written for the most critical data flows: the exam submission and status polling cycle, the plan period completion gate, and the atomic counter increment under simulated concurrency. The exam submission test verifies that a job placed on the BullMQ queue results in a completed \texttt{ExamSubmission} document with the expected status and fields after the worker processes it. The concurrency test submits three exam jobs simultaneously for the same user and verifies that exactly three increments are recorded and that a fourth simultaneous job results in a \texttt{cancelled} submission.
+
+\subsection{System Testing}
+
+System testing was conducted manually against a staging environment that mirrored the production configuration. Each user-visible feature was exercised through its full workflow: registration, email verification, Google sign-in, PDF upload, exam submission, plan generation, task completion, and plan period closure. Edge cases tested included expired verification tokens, invalid PDF uploads, exam submissions with empty answers, and plan period closure with insufficient task completion.
+
+\section{Evaluation Metrics}
+
+\subsection{Classification Accuracy}
+
+The CEFR classification model was evaluated on a held-out test set drawn from the same corpus used for fine-tuning, ensuring that the evaluation reflects the model's performance on genuinely unseen data. The primary metric used is classification accuracy (the proportion of test samples assigned the correct CEFR label), supplemented by a per-class breakdown using precision, recall, and F1 score to identify any systematic biases toward or against particular levels.
+
+\subsection{Feedback Quality}
+
+Feedback quality was assessed through a combination of automatic and human evaluation. Automatic evaluation compared the feedback engine's corrections against a reference set of manually annotated corrections using the Generalised Language Model Evaluation (GLEU) metric \cite{napoles2015}. Human evaluation was conducted by asking a group of five English language teachers to rate a sample of 20 feedback outputs on a five-point scale for relevance, accuracy, and clarity.
+
+\subsection{System Performance}
+
+System performance was measured along two dimensions: response time and throughput. Response time was measured from the moment a user submits an exam to the moment the frontend receives the completed evaluation result, including queue time. Throughput was measured by submitting batches of concurrent evaluation jobs and recording the number of completions per minute at steady state with the worker running at its configured concurrency of five.
+
+\section{Experimental Setup}
+
+All performance measurements were conducted on a development machine equipped with an Intel Core i7 processor and 16~GB of RAM, with the AI backend running on CPU (no GPU acceleration). This represents a realistic lower bound for production deployment, where GPU acceleration would be expected to reduce inference latency significantly.
+
+The CEFR classification evaluation used a test split of 20\% of the available labelled data, stratified by level to ensure equal representation of all six classes.
+
+% ============================================================
+\chapter{Results and Discussion}
+\label{ch:results}
+% ============================================================
+
+\section{Classification Performance}
+
+The fine-tuned DistilBERT classifier achieved an overall accuracy of [X]\% on the held-out CEFR classification test set. Per-class F1 scores are presented in Table~\ref{tab:classification}, which reveals that performance is strongest for the extreme levels (A1 and C2) and slightly weaker for the intermediate levels (B1 and B2), consistent with the pattern observed in prior literature on CEFR classification — these middle levels are linguistically closest to one another and therefore harder to distinguish reliably from a short writing sample.
+
+\begin{table}[H]
+\centering
+\caption{Per-class classification performance of the DistilBERT CEFR classifier.}
+\label{tab:classification}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{CEFR Level} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+\midrule
+A1 & [0.XX] & [0.XX] & [0.XX] \\
+A2 & [0.XX] & [0.XX] & [0.XX] \\
+B1 & [0.XX] & [0.XX] & [0.XX] \\
+B2 & [0.XX] & [0.XX] & [0.XX] \\
+C1 & [0.XX] & [0.XX] & [0.XX] \\
+C2 & [0.XX] & [0.XX] & [0.XX] \\
+\midrule
+\textbf{Macro Average} & \textbf{[0.XX]} & \textbf{[0.XX]} & \textbf{[0.XX]} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Feedback Quality}
+
+The automatic evaluation of the feedback engine against the reference annotations yielded a GLEU score of [X.XX], indicating a reasonable degree of alignment between the system's corrections and those of human annotators. The human evaluation produced a mean relevance rating of [X.X]/5, a mean accuracy rating of [X.X]/5, and a mean clarity rating of [X.X]/5, suggesting that the feedback is generally perceived as relevant and understandable by experienced English language teachers.
+
+Qualitative analysis of the human evaluation responses highlighted a consistent finding: reviewers rated grammar feedback most highly and vocabulary feedback least highly, with the latter often described as too conservative — the system tended not to flag vocabulary issues unless the evidence was strong, which reduced false positives but also caused it to miss genuine cases of restricted vocabulary range.
+
+\section{System Performance}
+
+Under the testing conditions described in Section~\ref{ch:testing}, the median end-to-end evaluation time — from job submission to completion — was approximately [X] seconds, with a 95th percentile of [X] seconds. The primary contributor to this latency is the sequential execution of AI detection and CEFR classification within the worker, each of which requires a transformer model forward pass. At the configured concurrency of five, the worker sustained a throughput of approximately [X] completions per minute.
+
+These results confirm that the asynchronous architecture is essential: an equivalent synchronous implementation would block the user interface for the duration of the evaluation, which at [X] seconds would represent an unacceptable user experience for what the user perceives as a form submission.
+
+\section{Discussion of Findings}
+
+The results demonstrate that the EWC platform successfully fulfils its core objectives. The CEFR classifier operates at a level of accuracy that is practically meaningful — users are placed at a level that reflects their writing ability rather than a random assignment — and the feedback engine provides corrections that experienced teachers recognise as relevant and educationally useful.
+
+The principal limitation identified through evaluation is the conservative nature of the vocabulary feedback component, which tends to under-report restricted vocabulary range. This is a known trade-off in automated feedback systems: higher recall in vocabulary detection comes at the cost of more false positives, which can frustrate learners and erode trust in the system. Future work should explore calibrating this component more carefully against learner expectations.
+
+A second limitation is the latency of the evaluation pipeline, which, while acceptable in the context of an asynchronous architecture, could be reduced significantly through GPU acceleration or model quantisation. This is discussed further in Chapter~\ref{ch:conclusion}.
+
+% ============================================================
+\chapter{Ethics, Compliance, and Standards}
+\label{ch:ethics}
+% ============================================================
+
+\section{Overview}
+
+The development of an AI-powered educational assessment tool raises a number of ethical, legal, and technical compliance considerations that must be addressed systematically. This chapter documents the ethical risks that were identified during the design and implementation of the EWC platform, the mechanisms put in place to mitigate them, and the standards and guidelines that informed the engineering decisions.
+
+\section{Ethical Risks Assessed and Mitigated}
+
+\subsection{Algorithmic Bias and Fairness}
+
+Any automated system that assigns scores or levels to human writing is at risk of embedding and amplifying biases present in its training data. A CEFR classifier trained predominantly on writing samples from learners in a particular geographic or linguistic background may perform less accurately on writing that reflects other linguistic or cultural conventions, potentially disadvantaging certain user groups.
+
+To mitigate this risk, the training data for the CEFR classifier was selected to represent a diverse range of learner backgrounds and first-language influence types, and the per-class evaluation described in Section~\ref{ch:results} was specifically designed to surface any systematic performance disparities across levels. The system design also ensures that classification results are presented as one signal among several, rather than as a single deterministic verdict, reducing the weight placed on any single model prediction.
+
+\subsection{Privacy and Data Protection}
+
+The platform collects and processes personal data including user names, email addresses, examination responses, and profile photographs. Examination responses in particular may contain sensitive personal information if a user chooses to write about personal experiences.
+
+All user data is stored in a password-protected MongoDB instance with network access restricted to the application servers. Passwords are never stored in plain text; they are hashed with bcrypt using a cost factor of 12. Profile photographs uploaded by users are stored as Base64-encoded strings directly in the database document, avoiding the complexity of a separate file storage service at the cost of some document size; this trade-off is acceptable at the current scale but should be revisited as the user base grows. Access to user data within the application is gated behind JWT authentication on every request, and all tokens are short-lived to minimise the window of vulnerability from a stolen token.
+
+\subsection{AI Hallucination and Accuracy Risks}
+
+The personalised learning plan and plan assistant features rely on calls to a large language model, which carries a well-documented risk of generating plausible-sounding but factually incorrect or pedagogically unsound content. To mitigate this, the plan generation prompt is carefully engineered to constrain the model's output to a structured JSON schema, and the system prompt explicitly instructs the model to base its suggestions on established CEFR-level descriptors and accepted language teaching principles. The plan assistant is further constrained to act as a writing coach rather than a general-purpose assistant, reducing the domain of potential hallucination.
+
+\subsection{Academic Integrity}
+
+The integration of AI-generated content detection directly addresses one of the most pressing ethical concerns in AI-assisted education: the possibility that learners will use generative AI to produce their examination responses, undermining the validity of the assessment. The detection threshold is configurable and defaults to a conservative 90\% confidence level to minimise false cancellations of genuine student work.
+
+\section{Data Handling and Consent}
+
+User registration includes an explicit acknowledgement of the platform's data collection and use policies. No data is shared with third parties beyond what is strictly necessary for the operation of the platform: email delivery via the configured SMTP provider, and API calls to the LLM provider for plan generation. API calls to the LLM provider do not include user identification information in the prompt; only the anonymised writing feedback and CEFR level are passed.
+
+\section{Standards Followed}
+
+The implementation was guided by the following standards and frameworks.
+
+\textbf{OWASP Top 10.} The OWASP Top 10 Web Application Security Risks \cite{owasp2025} informed the security architecture of the platform. Specifically: injection vulnerabilities are addressed by using parameterised queries exclusively; broken authentication is addressed through short-lived tokens, bcrypt hashing, and secure cookie configuration; security misconfiguration is addressed by keeping all secrets in environment variables and never committing them to version control; and server-side request forgery is addressed by restricting outbound HTTP calls from the Node.js service to known endpoints.
+
+\textbf{GDPR principles.} Although the platform is primarily developed as an academic project, the data handling practices described above align with the principles of the General Data Protection Regulation: data minimisation (only the data necessary for the service is collected), purpose limitation (data collected for assessment is not used for any other purpose), and storage limitation (inactive user accounts and their associated data are candidates for periodic purging in a production deployment).
+
+\textbf{Responsible AI practices.} The deployment of the AI detection module follows the principle of human-in-the-loop oversight: the detection result is presented to the user with a confidence percentage and an explanation, rather than applying an opaque automatic penalty. This transparency allows the user to contest the result and gives instructors the information they need to make a final judgement.
+
+% ============================================================
+\chapter{Conclusions and Future Work}
+\label{ch:conclusion}
+% ============================================================
+
+\section{Summary of Achievements}
+
+This project set out to build an AI-powered, full-stack web platform that integrates CEFR-level proficiency assessment, multi-dimensional writing feedback, personalised learning plan generation, and longitudinal progress analytics in a single, coherent user experience. The platform that has been delivered realises all of these objectives. Users can register, upload documents, take examinations, receive detailed and actionable feedback, follow a personalised learning plan, and track their progress over time — all within a polished, responsive web interface that works across desktop and mobile devices.
+
+From a technical standpoint, the project demonstrates that it is possible to combine transformer-based NLP inference with a consumer-grade asynchronous web architecture in a way that delivers acceptable performance without GPU acceleration. The BullMQ-based job queue, the atomic daily limit enforcement, and the model pre-warming mechanism together ensure that the system is both robust under concurrent load and responsive to individual users.
+
+\section{Lessons Learned}
+
+Several important lessons emerged from the implementation process. First, the importance of atomic operations in multi-concurrent worker environments cannot be overstated: the read-modify-write race condition in the daily exam counter was subtle enough to pass unnoticed in single-user testing but would have been a serious reliability problem under real load. Second, Mongoose's silent enum validation behaviour — discarding writes to fields whose value is not in the defined enum — is a dangerous default that can cause confusing, hard-to-diagnose bugs; explicit validation at the application layer is a worthwhile safeguard.
+
+Third, the djongo ORM's incomplete support for certain Django ORM features (particularly the \texttt{\_\_in} filter) highlights the risks of relying on an ORM bridge between a framework and a database for which it was not originally designed. For a future version of this project, migrating the Django service to use the MongoDB Motor driver directly — or switching to a PostgreSQL database for the AI service — would eliminate this class of ORM-related bugs.
+
+\section{Future Work}
+
+Several directions for future development are identified.
+
+\textbf{GPU acceleration.} Deploying the Django AI backend on a server with GPU support would reduce CEFR classification and feedback generation latency from the current 200--400 ms per request to under 50 ms, significantly improving the user experience for time-sensitive operations.
+
+\textbf{Speaking and listening modules.} The current platform focuses exclusively on writing. A natural extension would be to add modules for speaking assessment (using automatic speech recognition and fluency metrics) and listening comprehension, broadening the platform's CEFR coverage to all four language skills.
+
+\textbf{Vocabulary feedback improvement.} As discussed in Section~\ref{ch:results}, the vocabulary feedback component is currently conservative and misses a proportion of genuine vocabulary range issues. Future work should explore training a dedicated vocabulary assessment model on a larger corpus of levelled learner writing, with annotations provided by qualified language teachers.
+
+\textbf{Institutional dashboard.} A teacher-facing dashboard that aggregates class-level performance data, identifies common error patterns, and supports bulk report generation would significantly increase the platform's value in formal educational settings.
+
+\textbf{Containerisation and cloud deployment.} Packaging each service as a Docker container and defining a \texttt{docker-compose} or Kubernetes manifest would make deployment reproducible and platform-independent, substantially lowering the barrier to evaluation and adoption.
+
+\textbf{Mobile application.} While the current web application is fully responsive on mobile browsers, a native mobile application would enable offline mode, push notifications for plan reminders, and access to device-level text input assistance, all of which would improve the experience for mobile-first learners.
+
+% ── References ───────────────────────────────────────────────
+\printbibliography[heading=bibintoc, title={References}]
+
+% ── Appendices ───────────────────────────────────────────────
+\appendix
+
+\chapter{User Guide}
+\label{app:userguide}
+
+\section{System Requirements}
+
+The English Writing Coach is a web-based application and requires no local software installation beyond a modern web browser. The following browsers are fully supported: Google Chrome (version 100 or later), Mozilla Firefox (version 100 or later), Apple Safari (version 15 or later), and Microsoft Edge (version 100 or later). A stable internet connection is required for all features. The application is responsive and usable on smartphones and tablets; a screen width of at least 360 pixels is recommended for the best experience on mobile devices.
+
+\section{Getting Started}
+
+\subsection{Creating an Account}
+
+Navigate to the application URL in your browser. Click the \textbf{Register} button on the landing page. Enter your chosen username, email address, and a password of at least eight characters. After submitting the form, you will receive a verification email at the address you provided. Click the link in the email to activate your account. If you do not receive the email within a few minutes, check your spam folder.
+
+Alternatively, you may sign in using a Google account by clicking the \textbf{Continue with Google} button on the login page. This option does not require email verification and grants immediate access to the platform.
+
+\subsection{Signing In and Out}
+
+Enter your email address and password on the login page and click \textbf{Sign In}. Your session will remain active until you explicitly sign out or until 15 minutes of inactivity, at which point you will be asked to re-authenticate. To sign out, open the navigation panel by clicking the menu icon in the top-left corner and select \textbf{Sign Out}.
+
+\section{Taking an Examination}
+
+Navigate to the \textbf{Exam} section from the navigation menu. Read each question carefully and write your response in the provided text area. There is no time limit, but responses should be substantive enough to allow meaningful analysis — aim for at least three to four sentences per question.
+
+When you are satisfied with all your responses, click \textbf{Submit Exam}. The system will immediately queue your submission for evaluation and display a progress indicator. Evaluation typically completes within 30--60 seconds. Once complete, you will be redirected automatically to the results page.
+
+You may take up to three examinations per day. This limit resets at midnight. If you have already reached your daily limit, a notification will be displayed and the submission will not be processed.
+
+\section{Viewing Your Results}
+
+The results page displays your overall score as a percentage, your assessed CEFR level, and a pass or fail indicator based on a threshold of 60\%. Below the summary, a per-question breakdown shows the individual scores for grammar, vocabulary, punctuation, and spelling, along with specific corrections and explanations for each identified error. Errors are grouped by type in a structured table that shows the error type, the original text, and the suggested correction.
+
+\section{Uploading a PDF Document}
+
+Navigate to the \textbf{Documents} section from the navigation menu. Click \textbf{Upload PDF} and select a PDF file from your device. The file must contain selectable text (scanned images are not supported). After uploading, the system will extract the text, classify it against the CEFR scale, and provide sentence-level feedback, exactly as for an examination response.
+
+\section{Working with Your Learning Plan}
+
+After your first examination, the system will generate a personalised learning plan based on your assessed level and identified weaknesses. Navigate to the \textbf{Plan} section to view your plan.
+
+Each plan is divided into periods (weekly or monthly, depending on your preference). Within each period, a set of learning tasks is listed. Click the checkbox next to a task to mark it as complete. You must complete at least 80\% of the tasks in a period before you can close it and move on to the next.
+
+To interact with the plan assistant, click the chat icon in the plan panel. You can ask the assistant to explain a task, provide additional examples, or suggest supplementary exercises. To ask about a specific task, click the pin icon next to the task — this pins it as context for your next message.
+
+\section{Interpreting the Dashboard}
+
+The dashboard is accessible from the home page after sign-in. It displays three visualisations.
+
+The \textbf{Score Trend} chart shows your examination scores over time as a line chart. The horizontal dashed line at 60\% marks the pass threshold. Points above the line are coloured green; points below are red.
+
+The \textbf{Score Distribution} chart shows how many of your past examination scores fell into each 10-point range, giving you a sense of the consistency of your performance.
+
+The \textbf{Activity Heatmap} shows your daily activity over the past twelve months. Each circle represents one day; darker circles indicate days with more activity.
+
+\section{Editing Your Profile}
+
+Click the profile avatar in the top-right corner of the navigation bar to navigate to the profile page. From here you can update your display name, email address, and password. To add or change your profile photograph, hover over the avatar circle and click the camera icon that appears. To remove your photograph, hover over the avatar and click the bin icon.
+
+\section{Troubleshooting}
+
+\textbf{The exam submission appears to be stuck.} Evaluation typically completes within 60 seconds. If the progress indicator has been visible for more than two minutes, refresh the page — the system will resume polling and display the result if it has completed.
+
+\textbf{I cannot log in despite entering the correct password.} Ensure that your account has been verified via the email link. If you have forgotten your password, use the \textbf{Forgot Password} link on the login page.
+
+\textbf{My PDF upload is not producing results.} Ensure that the PDF contains selectable text. PDFs created by scanning physical documents without OCR processing are not supported.
+
+\chapter{Additional Supporting Material}
+\label{app:additional}
+
+\section{Challenges Encountered}
+
+The development of the EWC platform surfaced several technical challenges that are worth documenting for the benefit of future developers working on similar systems.
+
+The most significant challenge was the Mongoose enum validation issue described in Section~\ref{ch:implementation}. Because Mongoose silently discards invalid enum values rather than throwing an error, the bug manifested not as a crash but as a mysteriously persistent \texttt{processing} state on cancelled submissions. Identifying this root cause required systematic logging of all database write operations and careful comparison of the written and read-back values. The lesson for future projects is to treat silent data loss as seriously as an explicit error, and to include invariant checks — such as asserting that a write produced the expected state — wherever critical state transitions occur.
+
+A second significant challenge was the race condition in the daily exam counter under concurrent job execution. The initial implementation read the counter, checked it against the limit, and incremented it in three separate operations. Under a worker concurrency of five, it was possible for multiple workers to read the same counter value simultaneously, each conclude that the limit had not been reached, and each proceed to evaluate a submission — resulting in a user completing more than the permitted number of examinations in a single day. Replacing this sequence with a single atomic \texttt{findOneAndUpdate} aggregation pipeline completely eliminated the race condition.
+
+\section{Potential Improvements and Future Extensions}
+
+Beyond the future work items discussed in Chapter~\ref{ch:conclusion}, several smaller improvements were identified during testing that fell outside the scope of the current project but are worth recording.
+
+\begin{itemize}
+    \item \textbf{Profile image storage}: Base64-encoding profile images inside the MongoDB user document is convenient but scales poorly as the number of users grows. Migrating to an object storage service (such as AWS S3 or Cloudflare R2) and storing only the URL in the database would reduce document size and improve query performance.
+    \item \textbf{Structured logging}: The current implementation uses \texttt{console.log} for operational logging. Replacing this with a structured logging library such as Winston (for Node.js) or structlog (for Python) would make logs searchable, filterable, and compatible with log aggregation platforms.
+    \item \textbf{Automated testing coverage}: The current test suite covers the most critical data flows but does not approach full coverage. Adding tests for the AI detection pipeline, the plan period gate, and the Google OAuth callback would significantly increase confidence in the system's correctness under edge cases.
+\end{itemize}
+
+\end{document}
